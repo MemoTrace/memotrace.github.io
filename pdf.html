@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <!-- FAVICON -->
+    <link href="img/favicon.ico" rel="icon">
+    <meta name="Keywords" content="MemoTrace 留痕 微信 微信聊天记录 聊天记录可视化 聊天记录导出 备份聊天记录">
+	<meta name="description" content="MemoTrace——一款强大的微信聊天记录管理工具">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background-color: #F5F5F5;
+            /*background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394AB85' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");*/
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            /*-webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.3);*/
+            border-radius: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0);
+            /*-webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);*/
+        }
+
+        .page {
+            flex-direction: row;
+            height: 80%;
+            max-width: 1200px;
+            box-shadow: 1px 1px 3px #ebebeb;
+            border-radius: 5px;
+        }
+
+        .page .side-bar {
+            width: 50px;
+            background-color: #2e2e2e;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .page .mid-bar {
+            width: 300px;
+            background-color: #ebebeb;
+            border-right: solid 1px #d6d6d6;
+        }
+
+        .page .main-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f5f5;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .page .main-body .title-bar {
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .page .main-body .title-bar p {
+            margin: 5px 25px 5px 25px;
+            font-size: 18px;
+        }
+
+        .page .main-body .container {
+            flex: 1;
+            border-top: solid 3px #f0f0f0;
+            border-bottom: solid 3px #f0f0f0;
+        }
+
+        .page .main-body .nav-bar {
+            height: 180px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page .main-body .nav-bar .turner-bar {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: #2e2e2e;
+            font-size: 16px;
+            transform: translateY(-10px);
+            user-select: none;
+        }
+
+        .page .main-body .nav-bar .turner-bar .button {
+            display: inline-block;
+            background-color: #d6d6d6;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding: 10px 15px 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .page .main-body .nav-bar .turner-bar .button:hover {
+            background-color: #ebebeb;
+        }
+
+        .page .main-body .nav-bar .turner-bar p {
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .page .main-body .nav-bar .turner-bar input {
+            border: none;
+            resize: none;
+            outline: none;
+            background: none;
+            border-bottom: solid 1px #1F1F1F;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            height: 24px;
+            width: 50px;
+        }
+
+
+        .container {
+            /*height: 80vh;*/
+            /*width: 100%;*/
+            /*max-width: 900px;*/
+            /*border-radius: 4px;*/
+            /*border: 0.5px solid #e0e0e0;*/
+            /*background-color: #f5f5f5;*/
+            display: flex;
+            /* flex-flow: column; */
+            overflow: hidden;
+            justify-content: center;
+            /* 在主轴上居中 */
+        }
+
+        .container .content {
+            width: calc(100% - 40px);
+            padding: 20px;
+            overflow-y: scroll;
+            flex: 1;
+        }
+
+        .container .content:hover::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .container .content:hover::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .bubble {
+            white-space: pre-wrap;
+            max-width: 400px;
+            padding: 10px 11px 10px 11px;
+            border-radius: 5px;
+            position: relative;
+            color: #1F1F1F;
+            font-size: 14px;
+            word-wrap: break-word;
+            word-break: normal;
+        }
+
+        .chat-refer {
+            margin-top: 5px;
+            max-width: 400px;
+            padding: 8px 10px 8px 10px;
+            border-radius: 3px;
+            position: relative;
+            color: #797979;
+            font-size: 12px;
+            background-color: #e8e8e8;
+            word-wrap: break-word;
+            word-break: normal;
+        }
+
+        .chat-refer-right {
+            margin-right: 15px;
+        }
+
+        .chat-refer-left {
+            margin-left: 15px;
+        }
+
+        .item-left .bubble {
+            margin-left: 15px;
+            background-color: #fff;
+        }
+
+        .item-left .bubble:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-top: 10px solid transparent;
+            border-right: 10px solid #fff;
+            border-bottom: 10px solid transparent;
+            left: -20px;
+        }
+
+        .item-right .bubble {
+            margin-right: 15px;
+            background-color: #9eea6a;
+        }
+
+        .item-right .bubble:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid #9eea6a;
+            border-top: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            right: -20px;
+        }
+
+        .item {
+            margin-top: 15px;
+            display: flex;
+            width: 100%;
+            page-break-inside: avoid;
+        }
+
+        .item-refer {
+            margin-top: 4px;
+        }
+
+        .item.item-right {
+            justify-content: flex-end;
+        }
+
+        .item.item-center {
+            justify-content: center;
+        }
+
+        .item.item-center span {
+            font-size: 12px;
+            padding: 2px 4px;
+            color: #fff;
+            background-color: #dadada;
+            border-radius: 3px;
+            -moz-user-select: none;
+            /*火狐*/
+            -webkit-user-select: none;
+            /*webkit浏览器*/
+            -ms-user-select: none;
+            /*IE10*/
+            -khtml-user-select: none;
+            /*早期浏览器*/
+            user-select: none;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper-left {
+            align-items: baseline;
+        }
+
+        .content-wrapper-right {
+            align-items: flex-end;
+        }
+
+        .displayname {
+            margin-left: 13px;
+            margin-left: 13px;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: darkgray;
+        }
+
+        .chat-image img,
+        .chat-file img {
+            margin-right: 18px;
+            margin-left: 18px;
+            max-width: 300px;
+            /*max-height: auto;*/
+        }
+
+        .avatar img {
+            width: 42px;
+            height: 42px;
+            border-radius: 3px;
+            user-select: none;
+        }
+
+        .chat-video video {
+            margin-right: 18px;
+            margin-left: 18px;
+            max-width: 350px;
+        }
+
+        .chat-audio {
+            max-width: 400px;
+        }
+
+        audio {
+            margin-left: 9px;
+            margin-right: 9px;
+        }
+
+        .chat-music-audio,
+        .chat-file {
+            width: 300px;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            height: 100px;
+            margin-left: 10px;
+        }
+
+        .chat-file img {
+            width: 50px;
+        }
+
+        .chat-music-audio .player-box,
+        .chat-file .file-box {
+            width: 300px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            height: 80px;
+        }
+
+        .chat-music-audio .player-original,
+        .chat-file .app-info {
+            border-top: 1px solid #ede3e3;
+        }
+
+        .chat-music-audio .player-original p,
+        .chat-file .app-info p {
+            margin-top: 3px;
+            color: #888;
+        }
+
+        .chat-music-audio .player-controls,
+        .chat-file .file-img {
+            display: flex;
+            align-items: center;
+            ;
+        }
+
+        .file-title,
+        .card-content>h2,
+        .description>p {
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+        }
+
+        .file-title,
+        .card-content>h2 {
+            -webkit-line-clamp: 2;
+        }
+
+        .description>p {
+            -webkit-line-clamp: 3;
+            margin-top: 2px;
+        }
+
+
+        .chat-music-audio .flex1,
+        .chat-file .flex1 {
+            flex: 1;
+            justify-content: start;
+        }
+
+        .chat-music-audio .flex2,
+        .chat-file .flex2 {
+            flex: 2;
+            justify-content: end;
+        }
+
+        .chat-music-audio .player-info,
+        .chat-file .file-info {
+            width: 200px;
+            height: 80px;
+            margin-left: 4px;
+            margin-top: 15px;
+            white-space: normal;
+            flex-basis: 200px;
+            word-break: break-word;
+        }
+
+        .chat-music-audio .song-title,
+        .chat-file .file-name {
+            font-weight: bold;
+            overflow-wrap: break-word;
+        }
+
+        .chat-music-audio .artist,
+        .chat-file .file-size {
+            margin-top: 5px;
+            color: #888;
+        }
+
+        .app-info {
+            font-size: 13px;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+        .file-size {
+            font-size: 14px;
+        }
+
+        .chat-music-audio .play-button {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0);
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .chat-music-audio .play-button.playing {
+            background: url("./icon/pause.png");
+        }
+
+        .chat-music-audio .play-button.paused {
+            background: url("./icon/play.png");
+        }
+
+        .input-area {
+            border-top: 0.5px solid #e0e0e0;
+            height: 150px;
+            display: flex;
+            flex-flow: column;
+            background-color: #fff;
+        }
+
+        textarea {
+            flex: 1;
+            padding: 5px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            overflow-y: auto;
+            overflow-x: hidden;
+            outline: none;
+            resize: none;
+        }
+
+        .button-area {
+            display: flex;
+            height: 40px;
+            margin-right: 10px;
+            line-height: 40px;
+            padding: 5px;
+            justify-content: flex-end;
+        }
+
+        .button-area button {
+            width: 80px;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .button-row,
+        .jump-row,
+        #paginationInfo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 14px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        input {
+            padding: 8px;
+            width: 120px;
+            box-sizing: border-box;
+            margin-right: 0px;
+            margin-left: 15px;
+        }
+
+        button,
+        input {
+            font-size: 14px;
+        }
+
+        #paginationInfo {
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* 分享的卡片 */
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            margin: 5px 20px 20px 20px;
+        }
+
+        .card a {
+            text-decoration: none;
+            /* 去掉链接的下划线 */
+            color: inherit;
+            /* 继承父元素的文字颜色 */
+
+        }
+
+        .card-content {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .thumbnail {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .description {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .link-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .app-logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .app-name {
+            font-weight: bold;
+        }
+
+        /* 转账 */
+
+        .transfer-box {
+            width: 200px;
+            height: 80px;
+            margin-left: 18px;
+            margin-right: 18px;
+            border-radius: 3px;
+            padding-left: 11px;
+            padding-right: 11px;
+            position: relative;
+        }
+
+        .transfer-box[paysubtype="1"],
+        .transfer-box[paysubtype="1"]::before {
+            background: #f79c46;
+        }
+
+        .transfer-box[paysubtype="1"] i {
+            background-image: url(./icon/transfer1.png);
+        }
+
+        .transfer-box:not([paysubtype="1"]),
+        .transfer-box:not([paysubtype="1"])::before {
+            background: #f8e2c6;
+        }
+
+        .transfer-box[paysubtype="3"] i {
+            background-image: url(./icon/transfer2.png);
+        }
+
+        .transfer-box[paysubtype="4"] i {
+            background-image: url(./icon/transfer3.png);
+        }
+
+        .transfer-box::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            transform: rotate(45deg);
+            top: 18px;
+        }
+
+        .transfer-box[issend="0"]::before {
+            left: -3px;
+        }
+
+        .transfer-box[issend="1"]::before {
+            left: 218px;
+        }
+
+        .trans-content {
+            display: flex;
+            height: 60px;
+            align-items: center;
+            position: relative;
+        }
+
+        .trans-content>i {
+            display: block;
+            width: 36px;
+            height: 36px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .transfer-texts {
+            margin-left: 7px;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .transfer-texts>span,
+        .transfer-texts>font,
+        .trans-bottom>span {
+            color: white;
+            font-weight: 500;
+        }
+
+        .transfer-texts>span {
+            font-size: 15px;
+        }
+
+        .transfer-texts>font {
+            font-size: 12px;
+            padding-left: 2px;
+        }
+
+        .transfer {
+            height: 60px;
+        }
+
+        .trans-bottom {
+            height: 16px;
+            margin-top: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .trans-bottom>span {
+            font-size: 10px;
+        }
+
+        /* 音视频通话 */
+
+        .call i {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            vertical-align: middle;
+            margin-right: 4px;
+            margin-top: -2px;
+        }
+
+        .call[calltype='1'] i {
+            background-image: url(./icon/phone.png);
+        }
+
+        .call[calltype='0'] i {
+            background-image: url(./icon/video.png);
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .button-row,
+            .jump-row,
+            #paginationInfo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 0px;
+            }
+
+            button {
+                padding: 5px 10px;
+                background-color: #3498db;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin: 0 5px;
+                transition: background-color 0.3s;
+            }
+
+            button:hover {
+                background-color: #2980b9;
+            }
+
+            input {
+                padding: 8px;
+                width: 120px;
+                box-sizing: border-box;
+                margin-right: 0px;
+                margin-left: 5px;
+            }
+        }
+
+        .system-msg>.emoji_img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .emoji_img {
+            width: 22px;
+            height: 22px;
+            vertical-align: middle;
+            margin-top: -4.4px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-image {
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            ::-webkit-scrollbar {
+                display: none;
+            }
+
+            .page {
+                width: 100%;
+                height: 100%;
+                box-shadow: none;
+            }
+
+            .page .side-bar,
+            .page .mid-bar {
+                display: none
+            }
+
+            .page .main-body .nav-bar {
+                height: 120px;
+            }
+
+            .page .main-body .nav-bar .turner-bar {
+                transform: none;
+                font-size: 12px;
+            }
+
+            .page .main-body .nav-bar .turner-bar input {
+                font-size: 14px;
+            }
+
+            .page .main-body .nav-bar .turner-bar .button {
+                padding: 10px 12px 10px 12px;
+            }
+        }
+    </style>
+    <title>周帅康</title>
+</head>
+
+<body>
+    <div class="page">
+        <!-- <div class="side-bar"></div> -->
+        <!-- <div class="mid-bar"></div> -->
+        <div class="main-body">
+            <div class="title-bar">
+                <p id="title">MemoTrace</p>
+            </div>
+            <div class="container">
+                <div class="content" id="chat-container" onscroll="checkScroll()">
+                    <!-- 时间 -->
+                    <div class="item item-center"><span>2024-1-28 21:44:40</span></div>
+                    <!-- 文本消息 -->
+                    <!-- 右边 -->
+                    <div class="item item-right">
+                        <div class="content-wrapper content-wrapper-right">
+                            <div class="bubble bubble-right">这是一条文本消息<img src="https://res.wx.qq.com/t/wx_fed/we-emoji/res/v1.2.8/assets/newemoji/2_04.png" id="嘿哈" class="emoji_img"></div>
+                        </div>
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/eO91m8Tl2jia7HdVQT88sw8xVBqp1lCSMU7dcJjtZwWBLN98DRJRefYR1xfib6k2iah82ljlX4KsoWBybt1W7Yp7E8hhzGdqj2fg5BANtGFQQo/132" loading="lazy"></div>
+                    </div>
+                    <div class="item item-left">
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/IlrwQ5UJsXujXoHqmRjSZ2YfYbibJUGD490wUauSI0oriar75D8mJejqCI90rLlbGfiaznibF7pucu7eTPqX521ZrqGMyu0JEFQcQs3BvSGPdD4/132" loading="lazy"></div>
+                        <div class="content-wrapper content-wrapper-right">
+                            <div class="bubble bubble-right">这是也一条文本消息<img src="https://res.wx.qq.com/t/wx_fed/we-emoji/res/v1.2.8/assets/newemoji/2_04.png" id="嘿哈" class="emoji_img"></div>
+                        </div>
+                    </div>
+                    <div class="item item-right">
+                        <div class="content-wrapper content-wrapper-right">
+                            <div class="bubble bubble-right">来一个表情包<img src="https://res.wx.qq.com/t/wx_fed/we-emoji/res/v1.2.8/assets/newemoji/2_04.png" id="嘿哈" class="emoji_img"></div>
+                        </div>
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/eO91m8Tl2jia7HdVQT88sw8xVBqp1lCSMU7dcJjtZwWBLN98DRJRefYR1xfib6k2iah82ljlX4KsoWBybt1W7Yp7E8hhzGdqj2fg5BANtGFQQo/132" loading="lazy"></div>
+                    </div>
+                    <!-- 左边表情包 -->
+                    <div class="item item-left">
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/IlrwQ5UJsXujXoHqmRjSZ2YfYbibJUGD490wUauSI0oriar75D8mJejqCI90rLlbGfiaznibF7pucu7eTPqX521ZrqGMyu0JEFQcQs3BvSGPdD4/132" loading="lazy"></div>
+                        <div class="content-wrapper content-wrapper-left">
+                            <div class="chat-image"><img src="http://vweixinf.tc.qq.com/110/20401/stodownload?m=ec75d9cbe5972ca19afbc232d38e2414&amp;filekey=30440201010430302e02016e0402535a0420656337356439636265353937326361313961666263323332643338653234313402030df9b2040d00000004627466730000000132&amp;hy=SZ&amp;storeid=26453cd10000c5e1e31350d630000006e01004fb1535a15d0c950b672b4f68&amp;ef=1&amp;bizid=1022" onclick="showModal(this)" loading="lazy"></div>
+                        </div>
+                    </div>
+
+                    <div class="item item-right">
+                        <div class="content-wrapper content-wrapper-right">
+                            <div class="bubble bubble-right">来一张图片<img src="https://res.wx.qq.com/t/wx_fed/we-emoji/res/v1.2.8/assets/newemoji/2_04.png" id="嘿哈" class="emoji_img"></div>
+                        </div>
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/eO91m8Tl2jia7HdVQT88sw8xVBqp1lCSMU7dcJjtZwWBLN98DRJRefYR1xfib6k2iah82ljlX4KsoWBybt1W7Yp7E8hhzGdqj2fg5BANtGFQQo/132" loading="lazy"></div>
+                    </div>
+
+                    <!-- 图片 -->
+                    <div class="item item-left">
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/IlrwQ5UJsXujXoHqmRjSZ2YfYbibJUGD490wUauSI0oriar75D8mJejqCI90rLlbGfiaznibF7pucu7eTPqX521ZrqGMyu0JEFQcQs3BvSGPdD4/132" loading="lazy"></div>
+                        <div class="content-wrapper content-wrapper-left">
+                            <div class="chat-image"><img src="./img/weixin.png"></div>
+                        </div>
+                    </div>
+
+                    <!-- 视频 -->
+                    <!-- 消息引用 -->
+                    <div class="item item-right">
+                        <div class="content-wrapper content-wrapper-right">
+                            <div class="bubble bubble-right">这是一条引用消息</div>
+                            <div class="chat-refer chat-refer-right">Shuaikang Zhou：这是也一条文本消息<img src="https://res.wx.qq.com/t/wx_fed/we-emoji/res/v1.2.8/assets/newemoji/2_04.png" id="嘿哈" class="emoji_img"></div>
+                        </div>
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/eO91m8Tl2jia7HdVQT88sw8xVBqp1lCSMU7dcJjtZwWBLN98DRJRefYR1xfib6k2iah82ljlX4KsoWBybt1W7Yp7E8hhzGdqj2fg5BANtGFQQo/132" loading="lazy"></div>
+                    </div>
+                    <!-- 转账 -->
+                    <!-- 转出 -->
+                    <div class="item item-left">
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/IlrwQ5UJsXujXoHqmRjSZ2YfYbibJUGD490wUauSI0oriar75D8mJejqCI90rLlbGfiaznibF7pucu7eTPqX521ZrqGMyu0JEFQcQs3BvSGPdD4/132" loading="lazy"></div>
+                        <div class="content-wrapper content-wrapper-left">
+                            <div class="transfer-box" issend="0" paysubtype="1">
+                                <div class="transfer">
+                                    <div class="trans-content"><i></i>
+                                        <div class="transfer-texts"><span>￥100.00</span>
+                                            <font>转账</font>
+                                        </div>
+                                    </div>
+                                    <div class="trans-bottom"><span>聊天转账</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 接收 -->
+                    <div class="item item-right">
+                        <div class="content-wrapper content-wrapper-right">
+                            <div class="transfer-box" issend="1" paysubtype="3">
+                                <div class="transfer">
+                                    <div class="trans-content"><i></i>
+                                        <div class="transfer-texts"><span>￥100.00</span>
+                                            <font>已收款</font>
+                                        </div>
+                                    </div>
+                                    <div class="trans-bottom"><span>聊天转账</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/eO91m8Tl2jia7HdVQT88sw8xVBqp1lCSMU7dcJjtZwWBLN98DRJRefYR1xfib6k2iah82ljlX4KsoWBybt1W7Yp7E8hhzGdqj2fg5BANtGFQQo/132" loading="lazy"></div>
+                    </div>
+
+                    <div class="item item-right">
+                        <div class="content-wrapper content-wrapper-right">
+                            <div class="bubble bubble-right">这是一条分享卡片</div>
+                        </div>
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/eO91m8Tl2jia7HdVQT88sw8xVBqp1lCSMU7dcJjtZwWBLN98DRJRefYR1xfib6k2iah82ljlX4KsoWBybt1W7Yp7E8hhzGdqj2fg5BANtGFQQo/132" loading="lazy"></div>
+                    </div>
+
+                    <!-- 分享卡片 -->
+                    <div class="item item-left">
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/IlrwQ5UJsXujXoHqmRjSZ2YfYbibJUGD490wUauSI0oriar75D8mJejqCI90rLlbGfiaznibF7pucu7eTPqX521ZrqGMyu0JEFQcQs3BvSGPdD4/132" loading="lazy"></div>
+                        <div class="content-wrapper content-wrapper-left">
+                            <div class="card"><a href="https://www.xiaohongshu.com/discovery/item/659a8966000000001200189d?app_platform=android&amp;app_version=8.24.3&amp;author_share=1&amp;ignoreEngage=true&amp;share_from_user_hidden=true&amp;type=normal&amp;xhsshare=WeixinSession&amp;appuid=5f2631820000000001006d0e&amp;apptime=1708066159" target="_blank">
+                                    <div class="card-content">
+                                        <h2 title="当我把和男朋友两年半的聊天记录可视化">当我把和男朋友两年半的聊天记录可视化</h2>
+                                        <div class="description">
+                                            <p title="年底整活儿[偷笑R] 和陈师傅在一起两年了，用写论文学到的nlp技能（不是），把全部聊天记录爬出来做了数据分析，一共">
+                                                年底整活儿[偷笑R] 和陈师傅在一起两年了，用写论文学到的nlp技能（不是），把全部聊天记录爬出来做了数据分析，一共</p>
+                                            <img loading="lazy" class="thumbnail" src="./image/0d75466dc1013e48462e758f83ec7179_t.jpg" alt="Thumbnail">
+                                        </div>
+                                    </div>
+                                    <div class="link-info">
+                                        <img loading="lazy" class="app-logo" src="" alt="App Logo">
+                                        <span class="app-name">小红书</span>
+                                    </div>
+                                </a></div>
+                        </div>
+                    </div>
+
+                    <div class="item item-right">
+                        <div class="content-wrapper content-wrapper-right">
+                            <div class="bubble bubble-right">功能多多、展示不过来了</div>
+                        </div>
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/eO91m8Tl2jia7HdVQT88sw8xVBqp1lCSMU7dcJjtZwWBLN98DRJRefYR1xfib6k2iah82ljlX4KsoWBybt1W7Yp7E8hhzGdqj2fg5BANtGFQQo/132" loading="lazy"></div>
+                    </div>
+
+                    <div class="item item-right">
+                        <div class="content-wrapper content-wrapper-right">
+                            <div class="chat-image"><img src="./pyqdemo/images/x2.png"></div>
+                        </div>
+                        <div class="avatar"><img src="https://wx.qlogo.cn/mmhead/ver_1/eO91m8Tl2jia7HdVQT88sw8xVBqp1lCSMU7dcJjtZwWBLN98DRJRefYR1xfib6k2iah82ljlX4KsoWBybt1W7Yp7E8hhzGdqj2fg5BANtGFQQo/132" loading="lazy"></div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

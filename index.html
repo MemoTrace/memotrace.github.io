@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://coscdn.htmlpage.cn/canvas-html/demo-podcasts.html -->
+<html dir="ltr" lang="en-US" style="--cnvs-viewport-width: 2000; --cnvs-viewport-height: 996; --cnvs-body-height: 5271;" class="no-touch">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="author" content="SiYuan">
+    <!-- Document Title
+	============================================= -->
+	<title>留痕 | MemoTrace</title>
+	<!-- FAVICON -->
+    <link href="favicon.ico" rel="icon">
+    <meta name="Keywords" content="MemoTrace 留痕 微信 微信聊天记录 聊天记录可视化 聊天记录导出 备份聊天记录 备份">
+	<meta name="description" content="MemoTrace——一款强大的微信聊天记录管理工具">
+
+	<!-- Core Style -->
+	<link rel="stylesheet" href="./css/style.css">
+
+	<link rel="stylesheet" href="./css/font-icons.css">
+
+	<!-- Plugins/Components CSS -->
+	<link rel="stylesheet" href="./css/swiper.css">
+	<link rel="stylesheet" href="./css/bs-switches.css">
+
+	<!-- Niche Demos -->
+	<link rel="stylesheet" href="./css/podcasts.css">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="./css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<script charset="utf-8" src="./js/UrlChangeTracker.js"></script>
+	<script type="text/javascript" src="./js/echarts.min.js"></script>
+    <script type="text/javascript" src="./js/echarts-wordcloud.min.js"></script>
+</head>
+
+<body class="stretched device-xxl device-up-xxl device-up-xl device-up-lg device-up-md device-up-sm device-up-xs is-expanded-menu has-plugin-pricing-switcher has-plugin-bootstrap has-plugin-swiper has-plugin-bscomponents">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<img src="./img/shape-circle.png" alt="..." class="position-absolute z-0 op-01" style="width: 10%; top: -80px; left: -80px">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="border-bottom-0 transparent-header" data-sticky-shrink="false">
+			<div id="header-wrap" class="">
+				<div class="container">
+					<div class="header-row justify-content-lg-between top-search-parent">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="https://memotrace.cn/">
+								<img class="logo-default" src="./img/logo3.0.png" alt="HTMLPAGE Logo" >
+								<img class="logo-dark" src="./img/logo3.0.png" alt="HTMLPAGE Logo">
+							</a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+							<!-- Top Search
+							============================================= -->
+							<div id="top-search" class="header-misc-icon">
+								<a href="#" id="top-search-trigger"><i class="uil uil-search"></i><i class="bi-x-lg"></i></a>
+							</div><!-- #top-search end -->
+
+						</div>
+
+						<div class="header-misc d-none d-md-flex">
+
+							<!-- Icons
+							============================================= -->
+							<a href="https://github.com/LC044/WeChatMsg/" class="header-misc-icon border-start ps-4" target="_blank">
+								<img src="./img/github.svg" alt=".." width="24" height="24" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Apple Podcast" data-bs-original-title="GitHub">
+							</a>
+
+							<a href="https://gitee.com/LC044/WeChatMsg/" class="header-misc-icon" target="_blank">
+								<img src="./img/gitee.svg" alt=".." width="24" height="24" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Google Podcast" data-bs-original-title="Gitee">
+							</a>
+
+							<!-- <a href="#" class="header-misc-icon">
+								<img src="./img/spotify.svg" alt=".." width="24" height="24" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Spotify" data-bs-original-title="Spotify">
+							</a> -->
+
+						</div>
+
+						<div class="primary-menu-trigger">
+							<button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+								<span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+							</button>
+						</div>
+
+						<nav class="primary-menu">
+
+							<ul class="menu-container">
+								<li class="menu-item current"><a class="menu-link" href="#"><div>首页</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="#function"><div>功能</div></a></li>
+                                <li class="menu-item"><a class="menu-link" href="#price"><div>价格</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="#footer"><div>联系</div></a></li>
+                                <li class="menu-item"><a class="menu-link" href="/doc/" target="_blank"><div>教程</div></a></li>
+                                <li class="menu-item"><a class="menu-link" href="/tools/" target="_blank"><div>工具</div></a></li>
+							</ul>
+
+						</nav><!-- #primary-menu end -->
+
+						<form class="top-search-form" action="" method="get">
+							<input type="text" name="q" class="form-control" value="" placeholder="输入关键字，按回车" autocomplete="off">
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
+		<section id="slider" class="slider-element">
+			<div class="position-absolute end-0 bootom-0 w-100 h-100 hero-img"></div>
+			<div class="container py-5 py-lg-6">
+				<div class="row align-items-center justify-content-between">
+					<div class="col-xl-5 col-lg-7 pt-lg-5 pb-lg-6">
+						<div class="position-relative z-1">
+							<div class="fs-6 text-uppercase ls-3 mb-4">我的数据我做主</div>
+							<h2 class="mb-0 display-4 lh-1">MemoTrace<br> <span class="font-secondary fw-semibold fst-italic text-lowercase color display-2">留痕</span><span></span></h2>
+							<p class="fs-6 mt-3 fw-normal">一款强大的数据管理工具</p>
+						</div>
+
+						<div class="mt-4 mb-5">
+							<a  href="https://wwcj.lanzouw.com/b00rn0qovi" target="_blank"  class="button bg-color border-color style-2 m-0"><span>下载</span> <i class="bi-play-fill"></i></a>
+							<a href="#function" class="button button-large button-border border-width-2 rounded-pill ms-2">了解更多</a>
+						</div>
+
+						<div class="d-flex align-items-center">
+							<div>
+								<h3 class="display-6 mb-0 font-secondary" style="line-height: 0.75;">40K</h3>
+								<small class="fs-6 op-08">关注粉丝</small>
+							</div>
+
+							 <span class="mx-5 display-4 op-03 lh-1">·</span>
+
+							<div>
+								<h3 class="display-6 mb-0 font-secondary" style="line-height: 0.75;">450K</h3>
+								<small class="fs-6 op-08">下载量</small>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-5">
+						<img src="https://blog.lc044.love/static/img/91cadaae3a6f7ee133dafd4f9b5d8680.logo.webp" alt="..." class="rounded">
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap pt-0">
+
+				<div class="section my-0 mb-lg-5">
+					<div class="container py-lg-5">
+						<div class="row justify-content-center">
+							<div class="col-xl-6 col-lg-10 text-center">
+								<h2 class="display-5 font-secondary fw-semibold text-black mb-3">隐私保护</h2>
+								<p class="mb-5">留痕非常重视用户的数据隐私，所有聊天数据都在本地处理，仅限用户个人使用，交由用户个人管理，不会外泄。</p>
+								<div class="input-group input-group-lg input-seacrh-section bg-white mx-auto w-75">
+									<input type="search" class="form-control" placeholder="搜索博客.." aria-label="Search Podcasts, Episode, Hosts.." aria-describedby="input-search" style="--cnvs-input-focus-box-shadow: none;">
+									<a href="#" class="input-group-text bi-search bg-color text-white" id="input-search"></a>
+								</div>
+								<div class="text-smaller mt-2 op-08">
+                                    <span class="op-07">热门搜索:</span> 
+                                    <a href="https://memotrace.cn/doc/" target="_blank" class="text-dark op-08 ms-1 link-underline-hover">教程</a>, 
+                                    <a  target="_blank" href="https://mp.weixin.qq.com/s/0Tokq3kPSh9uHDz7L9IhsA" class="text-dark op-08 ms-1 link-underline-hover">数据迁移</a>, 
+                                    <a  target="_blank" href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg3NDg5MzM1NA==&action=getalbum&album_id=3337478837793636353&scene=173&subscene=&sessionid=svr_1733161f796&enterid=1708521558&from_msgid=2247483858&from_itemidx=1&count=3&nolastread=1#wechat_redirect" class="text-dark op-08 ms-1 link-underline-hover">更新日志</a>, 
+                                    <a  target="_blank" href="https://mp.weixin.qq.com/s/V-0y5SZKaDwTqpohOwvR8A" class="text-dark op-08 ms-1 link-underline-hover">年度报告</a>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="section bg-transparent mt-6 mb-0" id="function">
+					<div class="container">
+						<div class="heading-block mx-auto text-center" style="max-width: 600px">
+							<small class="text-black-50 text-uppercase ls-3 fw-semibold">我们的功能</small>
+							<h2 class="text-capitalize fw-semibold ls-0 mb-1" style="font-size: 36px">管理您的聊天数据</h2>
+							<p>提供数据获取、导出、分析全栈式解决方案</p>
+						</div>
+						<div class="clear"></div>
+						<div class="row showcase-section align-items-center justify-content-between">
+							<div class="col-lg-3 col-md-5">
+								<ul class="mb-0">
+									<li class="showcase-feature" data-target="#target-1">
+										<h3>获取信息</h3>
+										<p>一键式操作，数据信手拈来</p>
+									</li>
+									<li class="showcase-feature" data-target="#target-2">
+										<h3>导出聊天记录</h3>
+										<p>批量导出、自定义时间、消息类型任意选、Word、Excel、HTML、TXT想要哪个勾哪个</p>
+									</li>
+									<li class="showcase-feature" data-target="#target-3" >
+										<h3>聊天分析报告</h3>
+										<p>聊天也有仪式感</p>
+									</li>
+									<li class="showcase-feature showcase-feature-active" data-target="#target-4">
+										<h3 class="text-uppercase">AI聊天助手</h3>
+										<p>比你更懂你的女朋友</p>
+									</li>
+                                    <!-- <li class="showcase-feature" data-target="#target-5"> -->
+										<!-- <h3 class="text-uppercase">新功能上线</h3> -->
+										<!-- <p>支持导出朋友圈HTML、PDF，聊天数据导出PDF</p> -->
+									<!-- </li> -->
+								</ul>
+							</div>
+
+							<div class="col-lg-8 col-md-7">
+								<div id="target-1" class="showcase-target">
+									<a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8401081858365!2d144.95373095091972!3d-37.81721397965242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2s!4v1526558559407" data-lightbox="iframe">
+										<img src="./img/数据获取.png" alt="Image">
+									</a>
+								</div>
+								<div id="target-2" class="showcase-target">
+									<img class="rounded" src="./img/微信图片_20240130214341.jpg" alt="Image">
+								</div>
+								<div id="target-3" class="showcase-target">
+									<!-- <div id="word_cloud" class="rounded"></div> -->
+									<img class="rounded" src="./img/card1.png" alt="Image">
+                                    <img class="rounded" src="./img/card2.png" alt="Image">
+                                    <img class="rounded" src="./img/card3.png" alt="Image">
+								</div>
+								<div id="target-4" class="showcase-target showcase-target-active">
+									<img class="rounded" src="./img/why.gif" alt="Image">
+								</div>
+                                <div id="target-5" class="showcase-target">
+									<img class="rounded" src="./img/pyqdemo.png" alt="Image">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="profile" class="section bg-transparent my-0 my-lg-5 pb-0 pb-lg-5">
+					<div class="container mw-md py-3">
+						<div class="row gy-5">
+							<div class="col-sm-9">
+								<div class="fs-6 op-07 mb-3">致力于打造一个操作最简单、功能最全面、创意最丰富的聊天记录管理工具</div>
+								<h3 class="display-3 mb-0 fw-normal text-black">最热门的<span class="font-secondary fw-bold fst-italic">聊天管理工具</span></h3>
+							</div>
+
+							<div class="col-md-4">
+								<div class="row">
+									<a href="https://blog.lc044.love/post/5" class="col-auto audio-logos me-2 bg-color text-white" style="--icon-size: 48px;">
+										<i class="bi-play-fill"></i>
+										<!-- <img src="https://blog.lc044.love/static/img/a774ab7a32635db7b4254c8ff7caaa89.Camera_XHS_16984826124131040g2sg30qo1ggopgqe05oce.webp" class="avatar" alt=".."> -->
+									</a>
+									<div class="ps-2 col">
+										<h3 class="fw-medium fs-5 text-transform-none lh-base mb-0">"留痕"使用教程</h3>
+										<p class="m-0 small op-07 mt-2"><span>Ep 1</span> <small class="mx-2">·</small> <span class="font-monospace">07:35</span></p>
+									</div>
+                                    <div style="text-align: center;">
+                                        <!-- <h3 class="display-6 mb-0 font-secondary" style="line-height: 0.75;">2.13M</h3> -->
+                                        <img alt="Hits" src="https://hits.b3log.org/LC044/memotrace.svg" loading="lazy">
+                                        <small class="fs-6 op-08">浏览量</small>
+                                    </div>
+									<a href="https://memotrace.cn/doc/" class="button">Read More<i class="fa fa-long-arrow-right"></i></a>
+								</div>
+
+								<div class="divider divider-text divider-center my-4"><span class="op-05">MemoTrace</span></div>
+
+								<p class="mb-5" style="text-indent:2em;">我深信有意义的不是微信，而是隐藏在对话框背后的一个个<strong>深刻故事</strong>。未来，每个人都能拥有AI的陪伴，而你的数据能够赋予它有关于你过去的珍贵记忆。我希望每个人都有将自己的生活痕迹👨‍👩‍👦👚🥗🏠️🚴🧋⛹️🛌🛀留存的权利，而不是遗忘💀。</p>
+								<p style="text-align: center;"><strong>所以《留痕》</strong></p>
+								
+								<div class="clear"></div>
+								<!-- <a href="https://github.com/LC044/WeChatMsg/" target="_blank" class="button button-border button-dark rounded-pill mt-5 ms-0">更多<i class="bi-arrow-right ms-2"></i></a> -->
+							</div>
+
+							<div class="col-md-8">
+								<!-- <img src="https://api.star-history.com/svg?repos=LC044/WeChatMsg&type=Date" class="rounded-6" alt="star-history"> -->
+                                <img src="./img/stars.svg" class="rounded-6" alt="star-history">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Slides
+				============================================= -->
+				<div class="section py-lg-6" id="rendering" style="background: linear-gradient(to bottom, var(--cnvs-themecolor) 60%, #FFF 60%);">
+					<div class="container dark pt-lg-5" data-bs-theme="dark">
+						<div class="row align-items-end mb-lg-6 justify-content-between">
+							<div class="col-sm-9">
+								<div class="fs-6 op-07 mb-3">数据比你更懂你</div>
+								<h2 class="mb-0 display-4 fw-bold">年度聊天报告<br> <span class="font-secondary fw-light fst-italic text-white display-4">情感</span><small class="mx-3 op-03">·</small><span class="font-secondary fw-light fst-italic text-white display-4">频率</span><small class="mx-3 op-03">·</small><span class="font-secondary fw-light fst-italic text-white display-4">分享</span></h2>
+							</div>
+                            <div class="col-sm-auto" style="text-align: right;">
+                                <div class="row-cols-auto">
+                                    <a href="https://memotrace.cn/2024Report/" target="_blank" class="button button-large button-light bg-white rounded-pill color ms-2">预览年度聊天报告</a>
+                                </div>
+    
+                                <div class="row-cols-auto">
+                                    <a href="https://365.kdocs.cn/l/clprdUWi4TWp" target="_blank" class="button button-large button-light bg-white rounded-pill color ms-2">预览聊天PDF</a>
+                                </div>
+
+                                <div class="row-cols-auto">
+                                    <a href="https://docs.qq.com/sheet/DSXNCb0tNVmF1aGxK" target="_blank" class="button button-large button-light bg-white rounded-pill color ms-2">预览聊天xlsx</a>
+                                </div>
+
+                                <!-- <div class="row-cols-auto">
+                                    <a href="./pyqdemo/index.html" target="_blank" class="button button-large button-light bg-white rounded-pill color ms-2">预览朋友圈</a>
+                                </div> -->
+                                <!-- <div class="row-cols-auto">
+                                    <a href="https://chat.memotrace.cn/" target="_blank" class="button button-large button-light bg-white rounded-pill color ms-2">AI对话</a>
+                                </div> -->
+                            </div>
+						</div>
+					</div>
+					<div class="slider-element section-podcasts overflow-visible pt-4">
+
+						<div class="container-fluid">
+							<div class="swiper_wrapper customjs overflow-visible h-auto">
+
+								<div class="swiper swiper-parent overflow-visible swiper-initialized swiper-horizontal swiper-backface-hidden">
+									<div class="swiper-wrapper" id="swiper-wrapper-e7104c76d5595d94d" aria-live="polite" style="cursor: grab; transition-duration: 0ms; transform: translate3d(-500.25px, 0px, 0px); transition-delay: 0ms;">
+										<div class="swiper-slide swiper-slide-prev" role="group" aria-label="1 / 9" data-swiper-slide-index="0" style="width: 660.25px; margin-right: 40px;">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img src="./img/why.gif" onclick="showModal(this)" loading="lazy">
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">AI比你更懂你的女朋友</a></h3>
+										</div>
+
+										<div class="swiper-slide swiper-slide-active" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="2 / 9" data-swiper-slide-index="1">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img src="./img/病假.gif" onclick="showModal(this)" loading="lazy">
+												<!-- <div class="swiper-slide-bg rounded-6" data-bg="./img/病假.gif" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url(./img/病假.gif);"></div> -->
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">AI助力办公，考勤一问即通</a></h3>
+										</div>
+										<div class="swiper-slide swiper-slide-next" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="3 / 9" data-swiper-slide-index="2">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img src="./img/contact_info.png" onclick="showModal(this)" loading="lazy">
+												<!-- <div class="swiper-slide-bg rounded-6" data-bg="http://lc044.love/static/img/4b01f97d7a0daeb0e87721b2bff15655.result.gif" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url(http://lc044.love/static/img/4b01f97d7a0daeb0e87721b2bff15655.result.gif);"></div> -->
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">好友数据全解析</a></h3>
+										</div>
+										<div class="swiper-slide" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="4 / 9" data-swiper-slide-index="3">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img class="rounded-6" src="./img/微信图片_20240130214341.jpg" onclick="showModal(this)" loading="lazy">
+												<!-- <div class="swiper-slide-bg rounded-6" data-bg="https://blog.lc044.love/static/img/bc003e9027bd0b1023246281a07baa17.image.webp" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url(https://blog.lc044.love/static/img/bc003e9027bd0b1023246281a07baa17.image.webp);"></div> -->
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">批量导出、自定义时间、消息类型任意选——想要哪个勾哪个</a></h3>
+										</div>
+
+                                        <div class="swiper-slide" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="4 / 9" data-swiper-slide-index="3">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img class="rounded-6" src="./img/pdfdemo.png" onclick="showModal(this)" loading="lazy">
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">消息一键导出PDF，永久保存</a></h3>
+										</div>
+
+                                        <!-- <div class="swiper-slide" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="4 / 9" data-swiper-slide-index="3">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img class="rounded-6" src="./img/pyqdemo.png" onclick="showModal(this)" loading="lazy">
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">导出朋友圈，记录精彩生活</a></h3>
+										</div> -->
+
+                                        <div class="swiper-slide" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="4 / 9" data-swiper-slide-index="3">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img class="rounded-6" src="./img/card4.jpg" onclick="showModal(this)" loading="lazy">
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">生成分析报告，留存历史记忆</a></h3>
+										</div>
+
+										<div class="swiper-slide" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="4 / 5" data-swiper-slide-index="3">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img src="./img/20231227211149.png" onclick="showModal(this)" loading="lazy">
+												<!-- <div class="swiper-slide-bg rounded-6" data-bg="./img/20231227211149.png" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url(https://coscdn.htmlpage.cn/canvas-html/demos/podcasts/images/carousel/4.jpg);"></div> -->
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">年度报告——聊天总时长</a></h3>
+										</div>
+										<div class="swiper-slide" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="4 / 5" data-swiper-slide-index="3">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img src="./img/20231227211215.png" onclick="showModal(this)" loading="lazy">
+												<!-- <div class="swiper-slide-bg rounded-6" data-bg="./img/20231227211149.png" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url(https://coscdn.htmlpage.cn/canvas-html/demos/podcasts/images/carousel/4.jpg);"></div> -->
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">年度报告——年度聊天关键词</a></h3>
+										</div>
+										<div class="swiper-slide" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="4 / 5" data-swiper-slide-index="3">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img src="./img/20231227211228.png" onclick="showModal(this)" loading="lazy">
+												<!-- <div class="swiper-slide-bg rounded-6" data-bg="./img/20231227211149.png" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url(https://coscdn.htmlpage.cn/canvas-html/demos/podcasts/images/carousel/4.jpg);"></div> -->
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">年度报告——熬夜冠军</a></h3>
+										</div>
+										<div class="swiper-slide" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="4 / 5" data-swiper-slide-index="3">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img src="./img/20231227211241.png" onclick="showModal(this)" loading="lazy">
+												<!-- <div class="swiper-slide-bg rounded-6" data-bg="./img/20231227211149.png" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url(https://coscdn.htmlpage.cn/canvas-html/demos/podcasts/images/carousel/4.jpg);"></div> -->
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">年度报告——对你的分享欲是有规律的</a></h3>
+										</div>
+										<div class="swiper-slide" style="width: 460.25px; margin-right: 40px;" role="group" aria-label="4 / 5" data-swiper-slide-index="3">
+											<div class="position-relative d-flex flex-column vh-20">
+												<img src="./img/20231227211250.png" onclick="showModal(this)" loading="lazy">
+												<!-- <div class="swiper-slide-bg rounded-6" data-bg="./img/20231227211149.png" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url(https://coscdn.htmlpage.cn/canvas-html/demos/podcasts/images/carousel/4.jpg);"></div> -->
+											</div>
+											<h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">年度报告——你怎么老是发这个表情包</a></h3>
+										</div>
+									</div>
+								<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+								<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" aria-current="true">01</span><span class="swiper-pagination-bullet" tabindex="0">02</span><span class="swiper-pagination-bullet" tabindex="0">03</span><span class="swiper-pagination-bullet" tabindex="0">04</span><span class="swiper-pagination-bullet" tabindex="0">05</span></div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+                <!-- 套餐 -->
+				<!-- Slides
+				============================================= -->
+                <div class="section bg-white my-0 my-lg-5 py-0 py-lg-5" id="price">
+					<div class="container">
+						<div class="row mb-5 g-4 align-items-end text-center text-lg-start">
+							<div class="col-lg-9">
+								<div class="fs-6 op-07 mb-3">加入会员</div>
+								<h3 class="display-3 mb-0 text-black">下载软件<br>成为<span class="font-secondary fw-bold fst-italic">会员用户</span></h3>
+							</div>
+
+							<!-- <div class="col-lg-3 text-center">
+								<div class="pricing-tenure-switcher mb-2" data-container="#pricing-switch">
+									<div class="d-flex align-items-center justify-content-center">
+										<span class="pts-switch pts-false col-auto fw-bold">每月</span>
+										<div class="pts-switcher col-auto">
+											<div class="switch mx-3">
+												<input id="switch-toggle-pricing-tenure" class="switch-toggle switch-toggle-round" type="checkbox">
+												<label for="switch-toggle-pricing-tenure" class="mb-0"></label>
+											</div>
+										</div>
+										<span class="pts-switch pts-true col-auto text-muted op-05">每年</span>
+									</div>
+									<span class="mt-2 d-block small pts-right pts-extra-text fw-normal">每年节省30%费用支出</span>
+								</div>
+							</div> -->
+						</div>
+
+						<div id="section-pricing" class="page-section p-0 m-0">
+
+							<div id="pricing-switch" class="row pricing col-mb-50 mb-0">
+								<div class="col-lg-4 col-md-6">
+
+									<div class="pricing-box rounded-4">
+										<div class="pricing-title px-4">
+											<p class="font-secondary mb-0 op-06 small">标准VIP</p>
+											<h3 class="mb-0 fw-normal ls-0">标准版</h3>
+										</div>
+										<div class="pricing-price px-4 mt-3">
+											<div class="pts-content pts-content-false"><span class="price-unit">￥</span>0.00 <del style="font-size: 18px;">原价9.9</del></div>
+											<div class="pts-content pts-content-true d-none"><span class="price-unit">￥</span>71.99</div>
+										</div>
+										<div class="pricing-features bg-transparent border-0 py-2 px-4">
+											<ul>
+												<li><i class="bi-check-all me-3"></i>Windows平台</li>
+                                                <li><i class="bi-check-all me-3"></i>绑定一个账号</li>
+												<li><i class="bi-check-all me-3"></i>永久使用</li>	
+												<li><i class="bi-check-all me-3"></i>支持数据导出为Word、TXT、CSV、HTML</li>
+                                                <li><i class="bi-check-all me-3"></i><b>支持导出联系人</b></li>
+                                                <li><i class="bi-check-all me-3"></i>生成年度聊天报告</li>
+                                                <li><i class="bi-check-all me-3"></i>生成聊天分析报告</li>
+												<!-- <li><i class="bi-check-all me-3"></i></li> -->
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+
+											</ul>
+										</div>
+										<div class="pricing-action px-4 mb-3">
+											<a href="https://wwcj.lanzouw.com/b00rn0qovi" target="_blank" class="button button-border rounded-pill m-0">加入会员</a>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="col-lg-4 col-md-6">
+
+									<div class="pricing-box rounded-4 bg-color bg-opacity-10">
+										<div class="pricing-title px-4 bg-color bg-opacity-100">
+											<p class="text-light text-opacity-50 font-secondary mb-0 small">专业VIP </p>
+											<h3 class="mb-0 ls-0 fw-normal text-white">专业版</h3>
+										</div>
+										<div class="pricing-price px-4 mt-3">
+											<div class="pts-content pts-content-false"><span class="price-unit">￥</span>99.8</div>
+											<div class="pts-content pts-content-true d-none"><span class="price-unit">￥</span>169.99</div>
+										</div>
+										<div class="pricing-features bg-transparent border-0 py-2 px-4">
+											<ul>
+                                                <li><i class="bi-check-all me-3"></i>Windows平台</li>
+												<li><i class="bi-check-all me-3"></i>一个微信使用</li>
+												<li><i class="bi-check-all me-3"></i>永久使用</li>
+												<li><i class="bi-check-all me-3"></i>支持聊天数据导出为Word、TXT、CSV、HTML、<b><a href="./pdfdemo.pdf" target="_blank">PDF</a>、<a href="https://docs.qq.com/sheet/DSXNCb0tNVmF1aGxK" target="_blank">xlsx</a></b></li>
+												<!-- <li><i class="bi-check-all me-3"></i><b>支持导出朋友圈</b></li> -->
+                                                <li><i class="bi-check-all me-3"></i><b>支持导出与企业微信好友的聊天记录</b></li>
+                                                <li><i class="bi-check-all me-3"></i>生成年度聊天报告</li>
+                                                <li><i class="bi-check-all me-3"></i>生成聊天分析报告</li>
+                                                <li><i class="bi-check-all me-3"></i><b>支持导出公众号文章</b></li>
+                                                <li><i class="bi-check-all me-3"></i>可以更换电脑</li>
+                                                <li><a href="https://memotrace.cn/doc/posts/error/vip-faq.html" target="_blank"><i class="bi-check-all me-3"></i>查看详细介绍</a></li>
+											</ul>
+										</div>
+										<div class="pricing-action px-4 mb-3">
+											<a href="https://wwcj.lanzouw.com/b00rn0qovi" target="_blank"  class="button border-width-2 rounded-pill m-0">加入会员</a>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="col-lg-4">
+
+									<div class="pricing-box rounded-4">
+										<div class="pricing-title px-4">
+											<p class="font-secondary mb-0 op-06 small">体验版专业VIP</p>
+											<h3 class="mb-0 fw-normal ls-0">体验版<small class="badge rounded-pill bg-light color align-middle ms-2" style="font-size: 0.5em;">-30%</small></h3>
+										</div>
+										<div class="pricing-price px-4 mt-3">
+											<div class="pts-content pts-content-false"><span class="price-unit">￥</span>69.8</div>
+											<div class="pts-content pts-content-true d-none"><span class="price-unit">￥</span>269.99</div>
+										</div>
+										<div class="pricing-features bg-transparent border-0 py-2 px-4">
+											<ul>
+												<li><i class="bi-check-all me-3"></i>Windows平台</li>
+												<li><i class="bi-check-all me-3"></i>绑定一个账号</li>
+												<li><i class="bi-check-all me-3"></i>限时一周</li>
+												<li><i class="bi-check-all me-3"></i>支持聊天数据导出为Word、TXT、CSV、HTML、<b>PDF</b></li>
+												<!-- <li><i class="bi-check-all me-3"></i><b>支持朋友圈导出HTML、PDF</b></li> -->
+                                                <li><i class="bi-check-all me-3"></i><b>支持导出与企业微信好友的聊天记录</b></li>
+                                                <li><i class="bi-check-all me-3"></i>生成年度聊天报告</li>
+                                                <li><i class="bi-check-all me-3"></i>生成聊天分析报告</li>
+                                                <li><i class="bi-check-all me-3"></i>可以更换电脑</li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+											</ul>
+										</div>
+										<div class="pricing-action px-4 mb-3">
+											<a href="https://wwcj.lanzouw.com/b00rn0qovi" target="_blank" class="button border-width-2 bg-color bg-opacity-10 color rounded-pill m-0">加入会员</a>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+                <!-- 开发中功能 -->
+                <div class="section bg-transparent" id="more">
+                    <div class="container">
+
+                        <div class="heading-block mx-auto border-bottom-0 text-center" style="max-width: 600px">
+                            <small class="text-black-50 text-uppercase ls-3 fw-semibold"></small>
+                            <h2 class="text-capitalize fw-semibold mb-2" style="font-size: 36px; letter-spacing: -1px">开发中功能</h2>
+                            <p class="mb-3">支持需求定制，详情请联系客服！</p>
+                            <!-- <div class="text-center"><div class="button ls-0 button-rounded button-border text-transform-none fw-normal ">查看更多</div></div> -->
+                        </div>
+
+                        <div class="row col-mb-50 mb-0">
+                            <div class="col-lg-2 col-sm-6">
+                                <h2 style="text-align: center;">定时刷新</h2>
+                                <div class="portfolio-item border d-block bg1" style="border-radius: 30px;">
+                                    <div class="portfolio-image" style="background-color: #eaf4f5; border-radius: 30px;">
+                                        <img src="./img/时钟.svg" alt="Image">
+                                    </div>
+                                </div>
+                                <div class="portfolio-desc d-flex align-items-center justify-content-between position-absolute w-100" style="bottom: 0; padding: 0 20px 15px;">
+                                    <h3 class="mb-0 text-dark">定时刷新聊天记录</h3>
+                                    <!-- <h6 class="text-dark">$ 5.99/每天</h6> -->
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-6">
+                                <h2 style="text-align: center;">日记本</h2>
+                                <div class="portfolio-item border d-block bg1" style="border-radius: 30px;">
+                                    <div class="portfolio-image" style="background-color: #eaf4f5; border-radius: 30px;">
+                                        <img src="./img/diary.svg" alt="Image">
+                                    </div>
+                                    
+                                </div>
+                                <div class="portfolio-desc d-flex align-items-center justify-content-between position-absolute w-100" style="bottom: 0; padding: 0 20px 15px;">
+                                    <h3 class="mb-0 text-dark">某年某月某日发生了某件事</h3>
+                                    <!-- <h6 class="text-dark">$ 5.99/每天</h6> -->
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-sm-6">
+                                <h2 style="text-align: center;">群聊管理</h2>
+                                <div class="portfolio-item border d-block bg1" style="border-radius: 30px;">
+                                    <div class="portfolio-image" style="background-color: #eaf4f5; border-radius: 30px;">
+                                        <img src="./img/群聊.png" alt="Image">
+                                    </div>
+                                    
+                                </div>
+                                <div class="portfolio-desc d-flex align-items-center justify-content-between position-absolute w-100" style="bottom: 0; padding: 0 20px 15px;">
+                                    <h3 class="mb-0 text-dark">分析、导出群成员数据</h3>
+                                    <!-- <h6 class="text-dark">$ 5.99/每天</h6> -->
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-sm-6 mt-4 mt-sm-0">
+                                <h2 style="text-align: center;">文件管理</h2>
+                                <div class="portfolio-item border d-block" style="border-radius: 30px;">
+                                    <div class="portfolio-image" style="border-radius: 30px;">
+                                        <img src="./img/文件.png" alt="Image">
+                                    </div>
+                                    
+                                </div>
+                                <div class="portfolio-desc d-flex align-items-center justify-content-between position-absolute w-100" style="bottom: 0; padding: 0 20px 15px;">
+                                    <h3 class="mb-0 text-dark">微信重复文件清理</h3>
+                                    <!-- <h6 class="text-dark">$ 2.19/每天</h6> -->
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-sm-6 mt-4 mt-lg-0">
+                                <h2 style="text-align: center;">情感分析</h2>
+                                <div class="portfolio-item border d-block bg1" style="border-radius: 30px;">
+                                    <div class="portfolio-image" style="border-radius: 30px;">
+                                        <img src="./img/emotion.svg" alt="Image">
+                                    </div>
+                                    
+                                </div>
+                                <div class="portfolio-desc d-flex align-items-center justify-content-between position-absolute w-100" style="bottom: 0; padding: 0 20px 15px;">
+                                    <h3 class="mb-0 text-dark">分析聊天情感趋势</h3>
+                                    <!-- <h6 class="text-dark">$ 3.99/每天</h6> -->
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-sm-6 mt-4 mt-lg-0">
+                                <h2 style="text-align: center;">AI画像</h2>
+                                <div class="portfolio-item border d-block" style="border-radius: 30px;">
+                                    <div class="portfolio-image" style="border-radius: 30px;">
+                                        <img src="./img/AIavatar.jpg" alt="Image">
+                                    </div>
+                                    
+                                </div>
+                                <div class="portfolio-desc d-flex align-items-center justify-content-between position-absolute w-100" style="bottom: 0; padding: 0 20px 15px;">
+                                    <h3 class="mb-0 text-dark">根据聊天习惯生成性格画像</h3>
+                                    <!-- <h6 class="text-dark">$ 1.99/每天</h6> -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 开发功能end -->
+                <!-- 常见问题 -->
+                <div id="section-faqs" class="page-section my-5" data-onepage-settings="{&quot;offset&quot;:65,&quot;speed&quot;:1250,&quot;easing&quot;:&quot;easeInOutExpo&quot;}">
+					<div class="container">
+						<div class="row justify-content-between position-relative">
+							<div class="col-lg-5">
+								<h3 class="display-3 ls-n-3 fw-bolder mb-3">
+									常见问题</h3>
+								<!-- <p class="lead op-08 mb-5">自信地为最前沿的电子市场提供访问，支持开拓性资源的快速提供。</p> -->
+								<img src="./img/熊猫做作业.svg" alt="...">
+							</div>
+							<div class="col-lg-6 bg-contrast-0 p-5 rounded-xxl">
+                                <div class="toggle">
+									<div class="toggle-header">
+										<div class="toggle-title">
+											聊天隐私会泄露吗？
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-plus"></i>
+										</div>
+									</div>
+									<div class="toggle-content" style="display: none;">
+										“留痕”非常重视用户的数据隐私，所有聊天数据都在本地处理，仅限用户个人使用，交由用户个人管理，不会外泄。解析之后的数据处于未加密状态，为了保护本地数据不被他人获取，请导出之后及时删除“留痕”及其文件夹。
+									</div>
+								</div>
+
+                                <div class="line border-contrast-300 my-4"></div>
+
+								<div class="toggle">
+									<div class="toggle-header">
+										<div class="toggle-title">
+											可以导出哪些数据？
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-plus"></i>
+										</div>
+									</div>
+									<div class="toggle-content" style="display: none;">
+										可以导出电脑微信里能看到的数据包括聊天记录、联系人等，不能导出已经删除的或电脑微信看不到的数据，所以已经删除的数据或微信无法登录是不能导出的。
+									</div>
+								</div>
+
+								<div class="line border-contrast-300 my-4"></div>
+
+								<div class="toggle">
+									<div class="toggle-header">
+										<div class="toggle-title">
+											能恢复删除的聊天记录吗？
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-plus"></i>
+										</div>
+									</div>
+									<div class="toggle-content" style="display: none;">
+										不能。只能导出电脑微信里能看到的数据，删除的数据就不存在了，所以也无法导出。
+									</div>
+								</div>
+								<div class="line border-contrast-300 my-4"></div>
+								<div class="toggle">
+									<div class="toggle-header">
+										<div class="toggle-title">
+											我的数据都在手机里电脑微信只有部分数据怎么办？
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-plus"></i>
+										</div>
+									</div>
+									<div class="toggle-content" style="display: none;">
+										想把手机端的微信聊天记录转移到电脑上可以使用微信自带的聊天记录迁移功能。<br>
+                                        <a href="https://mp.weixin.qq.com/s/0Tokq3kPSh9uHDz7L9IhsA" target="_blank">详细步骤</a>
+                                    </div>
+								</div>
+								<div class="line border-contrast-300 my-4"></div>
+								<div class="toggle">
+									<div class="toggle-header">
+										<div class="toggle-title">
+											为什么图片很模糊、只有缩略图、没有原图？
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-plus"></i>
+										</div>
+									</div>
+									<div class="toggle-content" style="display: none;">
+										图片很模糊无法放大是因为电脑微信没有加载原图，本地没有原文件，所以要先在电脑微信加载原图之后才能导出清晰的图片（docx格式只有缩略图，原图请使用HTML或PDF格式）。
+									</div>
+								</div>
+								<div class="line border-contrast-300 my-4"></div>
+								<div class="toggle">
+									<div class="toggle-header">
+										<div class="toggle-title">
+											语音播放不了？（图片、视频、文件无法查看）
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-plus"></i>
+										</div>
+									</div>
+									<div class="toggle-content" style="display: none;">
+										1.只有HTML格式支持播放语音，如果HTML语音播放不了则检查电脑微信是否能够播放，如果电脑微信播放不了那么就是数据丢失，无法导出。否则可以重启一下电脑重新解析数据并导出（多试几次），图片、视频、文件同理。<br>
+                                        2.移动（复制，发送）HTML文件时必须移动整个文件夹，否则语音、图片、视频、文件都无法查看。
+									</div>
+								</div>
+								<div class="line border-contrast-300 my-4"></div>
+								<div class="toggle">
+									<div class="toggle-header">
+										<div class="toggle-title">
+											聊天记录缺失怎么办？
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-plus"></i>
+										</div>
+									</div>
+									<div class="toggle-content" style="display: none;">
+										重新登录一下电脑微信，然后重新解析数据，一次不行就多试几次。<br>
+                                        如果还不行，<a href="https://memotrace.cn/doc/posts/error/faq.html#_3-4-%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E7%BC%BA%E5%A4%B1" target="_blank">查看终极解决方案</a>
+									</div>
+								</div>
+							</div>
+							<div class="position-absolute z-n1 op-01" style="width: 300px; right: -130px; top: -105px;">
+								<svg viewBox="0 0 300 300"><path fill="var(--cnvs-themecolor)" d="M258.14 155.61c-1.04-4.14-3-7.76-5.55-10.95.14-.92.15-1.9-.02-2.95-.69-4.36-3.82-7.65-7.41-10.17-.64-3.53-2.96-7.04-5.76-9.95 1.76-5.16.23-11.45-2.98-16.45 1.33-.88 2.58-1.89 3.73-3.05 1.23-1.24 1.08-3.05 0-4.32-4.96-5.81-10.88-10.95-17.42-15.27-1.24-7.16-12.07-10.42-17.75-12.43-.63-.22-1.27-.43-1.9-.65-14.3-8.79-33.13-13.87-48.43-6.68-2.95-.55-5.93-.91-8.92-1.07-8.75-.48-21.66 1.27-23.14 12.05-.02.13-.02.26-.04.4-3.47.17-6.93.58-10.29 1.29-4.27-.01-8.55.24-12.79.77-5.49.68-11.2 1.59-16.43 3.62-4.65.85-9.13 2.54-11.85 6.32-1.55 2.16-2.17 4.45-2.13 6.75-.64 2.18-.77 4.53-.21 7 1.16 5.1 4.83 8.97 9.07 12.02l-2 .3c-4.95.79-10.43 2.39-11.47 8.05 0 .04-.01.08-.02.13-6.01 1.45-11.81 3.84-16.28 7.75-1.42 1.25-2.53 2.59-3.37 4.01-2.39 2.5-3.8 5.76-3.38 9.9.17 1.72.62 3.32 1.29 4.82-2.09 3.33-1.62 6.68.18 9.8-.76 2.33-.48 4.89 1.27 7.21 3.14 4.17 9.4 6.49 14.04 8.49.8.34 1.6.67 2.41 1 6.52 8.2 16.94 14.17 26.4 18.07 8.1 3.34 17.86 6.07 26.98 5.7.7.19 1.39.36 2.1.52 4.4 1.26 8.89 2.19 13.43 2.79 8.84 1.16 21.45 2.52 28.42-4.53 1.29-1.3 2.13-2.68 2.61-4.1 8.47-.37 17.98-1.84 23.8-8.26 1.64-1.8 2.73-3.74 3.38-5.72 1.73-.05 3.48-.13 5.26-.24 1.12.02 2.25.03 3.37.02 8.01 2.93 16.39 4.89 24.89 5.6 8.45.71 20.01-1.68 21.18-11.84.38-3.31-.49-6.53-2.08-9.55 5.26-.57 10.49-1.38 15.68-2.43 1.64-.33 2.51-2.24 2.13-3.76zm-99.18 25.53c-.72-1.38-1.59-2.74-2.53-4.03 1.06-.15 2.15-.33 3.24-.54.44 1.78.12 3.29-.72 4.57zm75.31-63.91c-.26-.18-.53-.36-.79-.52-.17-.23-.34-.45-.51-.68a25.45 25.45 0 00-1.24-3.04c-.16-.33-.32-.65-.49-.97.19-1.19.28-2.4.28-3.63 1.86 2.69 2.99 5.67 2.74 8.84zM50.16 156.52c.21-.16.43-.3.66-.44 2.14 1.55 4.47 2.91 6.78 4.1-.2.58-.36 1.18-.47 1.79-2.19-1.46-4.96-3.32-6.97-5.45zm-.94-19.71c.14-.38.31-.74.49-1.09 1.57-1.5 3.74-2.48 5.76-3.1.15-.05.3-.08.45-.12-2.03 2.11-3.06 4.85-2.49 7.58-1.57.42-3.13.95-4.61 1.63-.33-1.55-.25-3.19.39-4.9zm32.74-36.15c.27 1.61.82 3.19 1.59 4.68-.73-.59-1.45-1.2-2.16-1.84-.03-1.01.18-1.96.56-2.85zm40.99 77.99c.57.77 1.12 1.59 1.55 2.44-3.07-.98-6.09-2.11-9.04-3.36.37.04.74.1 1.11.14 2.06.23 4.12.4 6.19.54.06.08.13.16.19.24zm.4 9.79c-.25.18-.51.35-.77.5-9.2-.9-18.24-3.58-26.41-7.9-.26-.25-.52-.51-.77-.77.73 0 1.45-.04 2.18-.08 2.55-.02 5.11-.15 7.65-.41 4.9 2.61 10.18 4.6 15.13 6.29 1.36.47 2.74.9 4.12 1.32-.3.36-.66.71-1.11 1.04zm-60.19-22.68c-.33-1.08-.37-2.09-.18-3.02l.48.21c1.25.54 2.5 1.05 3.77 1.54 2.01.89 4.04 1.72 6.06 2.5.45 1.38 1.06 2.71 1.79 3.98-1.53-.5-3.04-1.04-4.53-1.64-2.53-1.02-5-2.22-7.39-3.57zm28.61 7.41c1.19.32 2.39.64 3.58.93-.56-.01-1.04-.02-1.42-.03-.69-.02-1.39-.04-2.08-.07-.05-.28-.07-.56-.08-.83zm10.74-76.52c.9-1.49 2.3-2.59 3.93-3.39 2.5 4.05 5.7 7.6 9.37 10.74a79.44 79.44 0 00-7.23 2.08c-.48.16-1.01.35-1.57.55-3.58-2.68-6.78-6.19-4.5-9.97zm14.22-3.85c4.84 1.17 9.49 2.97 13.64 5.21 1.2.65 2.68 1.53 4.26 2.58.23.35.47.7.72 1.04-3.86.04-7.72.32-11.54.85-4.05-2.83-7.68-6.1-10.53-9.94 1.16.06 2.31.15 3.46.25zm58.75 57.57c-1.57-.45-3.14-.92-4.7-1.41-2.2-2.52-4.79-4.79-7.36-6.73 1.72-.06 3.43-.14 5.15-.29.64-.05 1.28-.11 1.93-.17.34.05.69.09 1.03.13.21.16.43.31.63.47 3.32 2.55 7.21 5.34 9.55 8.95-1.58-.17-3.16-.35-4.74-.54-.5-.14-1-.27-1.5-.41zm-57.49-2.4a47.75 47.75 0 00-2.86-3.04c1.97.68 3.97 1.31 5.98 1.89-.08.65-.13 1.3-.12 1.97-1-.26-2.01-.54-3.01-.82zm21.16-41.81c2.42 2.51 5.14 4.79 8.01 6.86.2.4.37.81.52 1.21-4.81-1.81-9.95-3.9-14.9-6.42 1.25-.05 2.51-.08 3.77-.08 1.31 0 2.18-.67 2.62-1.57zm34.57 5.57a45.71 45.71 0 01-3.38-2.64c1.15.85 2.28 1.73 3.38 2.64zm7.66-1.44c-.8-1.31-1.76-2.56-2.81-3.74 1.76 1.69 3.43 3.54 4.81 5.57-.67-.63-1.34-1.23-2-1.83zm-36.26-9.85c1.06.75 2.19 1.4 3.37 1.97-.02.69.04 1.4.18 2.14-1.38-1.53-2.88-2.94-4.33-4.21-.19-.17-.39-.33-.58-.5.45.2.91.4 1.36.61zm41.8-2.18c-.34-.38-.68-.75-1.02-1.12-.09-.1-.18-.19-.27-.28.38-.4.75-.82 1.08-1.25 1.04.2 2.08.42 3.12.67.1.02.2.05.29.07-.04.03-.07.06-.11.09-.95.73-1.99 1.32-3.09 1.82zm-49.97 18.36c-.48.01-.96.02-1.44.04-6.63-2.08-13.42-3.65-20.29-4.67-.57-.35-1.14-.71-1.7-1.07 2.92-.85 5.86-1.52 8.83-2.03 4.57 2.99 9.54 5.53 14.6 7.72zm-5.42 34.63c-.7-.74-1.25-1.48-1.6-2.21.87.2 1.75.4 2.62.59.3.64.53 1.29.66 1.95-.56-.11-1.13-.22-1.69-.34zm50.74-8.83c.16-.01.32-.02.48-.04.59.18 1.18.37 1.77.56 4.46 1.48 8.76 3.37 12.87 5.65 1.13.63 2.37 1.31 3.59 2.08-6.26-1.22-13.49-3.87-18.71-8.25zm13.86-1.42c3.58 1.19 7.25 2.12 10.97 2.8.22 1.16 0 2.2-.52 3.14-3.17-2.42-6.95-4.38-10.45-5.94zm-1.66-31.07c2.22.4 4.46.72 6.71.96.5.05 1.03.11 1.57.16-2.24.22-4.54.51-6.84.9-.45-.69-.93-1.37-1.43-2.03zm12.69-6.48c-4.68-.39-9.35-.96-13.98-1.71 1.38-.96 2.6-2.1 3.57-3.46a73.47 73.47 0 0111.93 5.3l-1.52-.12zm4.41 47.26c.84-1.42 1.39-3.06 1.56-4.98.02-.24.03-.48.04-.72 2.01 1.18 3.97 2.45 5.87 3.81-2.2.73-4.41 1.28-6.47 1.7-.33.07-.67.13-1 .19zm8.28-30.39c-2.04-.61-4.1-1.17-6.17-1.67-1.7-.7-3.45-1.31-5.21-1.85 1.3-.02 2.6 0 3.88.06 3.22.15 6.47.62 9.61 1.48-.64.73-1.35 1.39-2.11 1.97zm-2.54-9.13c.68-.1 1.35-.22 2.01-.36l1.04.86c-1.01-.2-2.03-.36-3.05-.5zm-34.8-27.58c.48.81.84 1.69 1.01 2.63-1.77.35-3.53.79-5.25 1.32-.11.03-.22.07-.33.11-1.92-.39-3.84-.84-5.73-1.37-1.67-1-3.4-1.93-5.15-2.81 1.95-1.31 4.19-2.24 6.4-2.93 3.06.89 6.09 1.91 9.06 3.06zm-75.26 86.78c1.56-.12 3.11-.28 4.66-.48-.53.35-1.09.68-1.66.98-1-.15-2-.32-3-.5zm-5.18-16.12c.22.03.44.05.66.08.37.26.75.51 1.12.78-.59-.29-1.18-.58-1.77-.86zm-14.33 4.38c0 .52.04 1.05.11 1.58-2.44.35-5.11.86-7.3 2.03l-1.14-.27-.69-.18c.05-1.9.75-3.76 2.33-5.47 2.22.81 4.44 1.58 6.69 2.32zm59.91-4.87c-.44-.46-.85-.94-1.22-1.43 4.46.79 8.93 1.51 13.4 2.17.09.08.17.17.26.25-4.16-.19-8.3-.52-12.44-.99zm16.32-75.55a22.11 22.11 0 00-3.14 2.46c-.7-.28-1.4-.55-2.1-.82.38-.89.86-1.66 1.41-2.33 1.28.21 2.56.44 3.83.69zM96.4 94.69l.39-.3c0 .01-.01.02-.02.03-.88 1.79-1.2 3.51-1.11 5.16-.86-1.64-1.02-3.43.74-4.89zm20.62 40.15c-1.88.64-3.81 1.34-5.74 2.11-4.53-1.91-8.87-4.23-12.89-7.08 3.8.21 7.61.55 11.41 1 2.48 1.17 4.9 2.49 7.22 3.97zm-44.41 25.13c-1.82-.8-3.62-1.63-5.4-2.49 2.33-1.49 5.19-2.51 7.59-3.1-.9 1.34-1.59 2.83-1.97 4.47-.09.38-.15.75-.21 1.13zm86.4.85c2.7.14 5.4.2 8.1.22.75.61 1.52 1.21 2.29 1.8-1.34.1-2.54.16-3.45.21h-.11a61.79 61.79 0 01-6.82-2.24zm65.47-21.89c-.42.02-.83.03-1.25.04-2.3-1.57-4.67-3.03-7.12-4.37.7-.02 1.4-.05 2.1-.08 2.23-.12 4.54-.4 6.68-1.03 1.45 1.66 2.58 3.45 3.07 5.31-1.25.06-2.44.09-3.48.13zM91.07 103.79c1.69 2.5 4.07 4.52 6.4 6.43.14.12.29.23.43.34-.42 0-.83-.01-1.25-.01-1.7-1.28-3.31-2.64-4.67-4.07-.39-.88-.69-1.77-.91-2.69zm9.54 37.3l-1.71.42c-6.42-2.49-12.84-5.33-18.73-8.79.52.12 1.03.24 1.54.36 6.66 1.65 13.09 4.35 18.91 8zM124 161c0-.35-.03-.71-.07-1.06.53.22 1.05.45 1.58.68-.41.15-.82.3-1.22.43-.1-.01-.19-.03-.29-.04zm90.55-74.65c-.22.1-.46.2-.72.3-.97.35-1.98.63-3 .87-3.2-2.44-6.57-4.66-10.04-6.63-.71-.4-1.42-.79-2.14-1.17.79.18 1.57.37 2.34.58 3.97 1.09 8.61 2.8 12.77 5.21.26.28.53.56.78.84zm-64.01-10.04c-.07.3-.11.6-.14.89-1.03-.27-2.05-.53-3.08-.77.42-.1.85-.19 1.28-.27.65.03 1.29.08 1.94.14zm-83.43 57.02c.81-.28 1.63-.54 2.45-.78 2.6 2.4 5.81 4.4 8.85 6.05-2.01-.28-4.02-.48-6.05-.58-4.29-.21-8.61.06-12.86.75-.45-2.69 5.21-4.62 7.61-5.45zm1.14 10.75c5.79-.11 11.62.63 17.21 2.2-.61.28-1.2.58-1.8.88-1.46.05-2.92.15-4.38.3-.94-.13-1.89-.25-2.82-.35-.98-.1-1.97-.17-2.95-.23-2.17-.87-4.49-1.75-6.73-2.76.59-.03 1.09-.04 1.47-.05zm-6.94 10.34c-.53-.3-1.08-.62-1.64-.96 1.08-.18 2.17-.33 3.26-.45-.58.44-1.12.91-1.62 1.41zm21.72 16.98a5.2 5.2 0 01-.48-1.06c1.03.35 2.05.7 3.09 1.02-.09.7-.11 1.4-.07 2.09-.23-.04-.45-.08-.68-.11-.64-.62-1.27-1.27-1.86-1.95zm102.81-7.58c1.15-1.07 2.09-2.35 2.72-3.86l.79-.09c5.28.98 10.6 1.72 15.95 2.21-2.16 1.15-5.31 1.58-7.1 1.95-3.81.79-7.68 1.23-11.57 1.35-.24-.53-.5-1.05-.78-1.56zM56.83 145.31c.91.79 1.93 1.48 3.01 2.11-2.21.29-4.48.64-6.67 1.23-.58-.55-1.13-1.13-1.63-1.72 1.54-.69 3.38-1.21 5.28-1.61zm73.81 43.71l.9.21-1.01.03c.04-.08.08-.16.11-.24zm.88-5.97c-.2-1.47-.67-2.93-1.34-4.3.58.01 1.15 0 1.73.01 1.15 1.21 2.16 2.51 2.96 3.91.26.44.47.86.65 1.27-1.34-.27-2.68-.57-4.01-.89zm2.59-10.39c-2.24-1.92-4.68-3.63-7.26-5.14 3.85.51 7.72.93 11.59 1.23.82.37 1.66.72 2.49 1.06 1 .81 1.99 1.64 2.94 2.52-3.25.22-6.51.33-9.77.33zm61.36-1.96c3.18-.46 6.34-1.13 9.39-2.04 3.47-1.03 6.72-2.96 8.16-6.06 3.13.15 6.26.21 9.39.19-3.46 3.32-9.38 5.1-13.44 6.06-4.19.99-8.42 1.7-12.69 2.18-.28-.11-.55-.22-.82-.33zm39.04-20.96c-.4-.7-.84-1.38-1.32-2.03.31-.29.61-.58.91-.89 1.06-1.1 1.95-2.26 2.68-3.45 1.34-.41 2.61-.96 3.76-1.71 1.52 1.1 2.97 2.28 4.33 3.56.21.19.4.4.6.59-1.47 1.54-4.03 2.17-5.94 2.7-1.66.45-3.33.86-5.01 1.23zM89.94 85.11c-1.83 1.25-3.48 2.72-4.84 4.42-1.93 1.05-3.73 2.35-5.33 3.95a15.22 15.22 0 00-3.1 4.45c-.73-1.27-1.24-2.6-1.45-3.98.86-2.37 2.74-4.48 5.22-6.06 1.37-.87 2.81-1.59 4.3-2.21 1.9-.3 3.75-.45 5.2-.56zM73.82 125.2c-.31.06-.63.13-.95.19-.46-.04-.92-.07-1.37-.11-.01-.02-.02-.04-.03-.05 1.98-.32 3.97-.54 5.98-.66a74 74 0 00-3.62.63zm68.43 59.86c-.36-2.26-1.34-4.43-2.63-6.39 3.29-.13 6.58-.37 9.86-.71 1.87 2.14 3.66 4.56 4.63 6.91-.78.36-1.6.69-2.45.99-3.14-.11-6.28-.37-9.4-.78zm94.19-29.41c2.16-.49 4.29-1.05 6.37-1.72 2.35-.76 4.66-1.92 6.45-3.51.75 1.16 1.4 2.37 1.94 3.66-4.88.89-9.79 1.55-14.73 1.99 0-.14-.02-.28-.03-.42zm-2.78-56.01c-.35.25-.71.49-1.07.72a38.55 38.55 0 00-1.71-1.67c.01-.69-.05-1.38-.16-2.06 1.01.97 1.99 1.98 2.94 3.01zm-63.3-34.04c.01.86.39 1.66 1.21 2.12-.42-.03-.84-.06-1.25-.07-1.37-.62-2.76-1.19-4.17-1.72 1.39-.19 2.8-.3 4.21-.33zm-36.75 3.5c4.05-1.67 8.78-1.95 13.5-1.51-.94.8-1.85 1.66-2.7 2.57-2.81.15-5.57.67-8.14 1.96-1.13.57-2.13 1.31-2.97 2.17-1.48-.12-2.98-.2-4.48-.24.55-2.19 2.33-3.93 4.8-4.95zm-52.03 48.39c1.19-.14 2.37-.26 3.56-.37.99.56 2.01 1.08 3.06 1.56-3.76-.36-7.53-.42-11.28-.17-1.25.08-2.53.19-3.82.34 2.67-1.07 6.66-1.14 8.48-1.36zm4.59 66.91a73.84 73.84 0 01-11.41-6.65c2.27.52 4.55.96 6.85 1.32.36.33.72.64 1.07.94 2.96 2.48 6.1 4.76 9.36 6.83-2-.73-3.96-1.55-5.86-2.44zm55.39 10.67c-.98 0-1.97 0-2.95-.04.12-.1.24-.2.36-.31 4.5-.57 8.94-1.5 13.26-2.89.33 0 .66.01 1 .02-.34.32-.74.63-1.21.91-3.09 1.87-6.91 2.28-10.45 2.3zm23.93-9.81c-.69.08-1.38.16-2.07.23.75-.91 1.39-1.95 1.85-3.13.79-2.02 1.01-3.98.78-5.85 4.97.75 9.99 1.19 15.01 1.31-3 4.83-10.2 6.79-15.57 7.45zm70.83-14.19c-1.5 8.01-14.52 6.25-20.05 5.38-.83-.13-1.65-.29-2.48-.44 7.57-1.4 15.21-4.18 19.86-10.5.33-.45.63-.91.9-1.38 1.35 2.17 2.22 4.54 1.77 6.94z"></path><path fill="#212B50" d="M256.1 130.5c-2.88-6.83-8.15-12.39-14.93-14.81 8.04-10.35 5.56-26.39-3.32-36.04-11.95-12.98-31.65-11.59-47.04-5.4-7.06-10.71-18.77-18.02-31.83-18.98-14.88-1.09-29.67 6.83-37.67 19.26-13.11-6.45-29.76-8.47-42.56-.41-10.8 6.8-15.54 20.77-11.64 32.91.75 2.35 1.82 4.5 3.18 6.41-10.49.44-20.71 6.04-26.89 14.66-9.2 12.84-7.84 31.42.81 44.16 9.1 13.4 25.41 20.63 41.38 20.55 4.89-.03 9.6-.73 14.29 1.02 4.29 1.6 8.11 4.35 12.17 6.44 8.19 4.21 17.09 7.19 26.33 7.76 16.35 1.01 34.11-7.82 39.21-23.98 19.53 5.03 41.28 2.39 58.55-8.24 15.2-9.36 27.63-27.13 19.95-45.3zm-6.7 23.28c-7.86 15.29-25.8 23.47-42.07 25.92-10.39 1.56-21.05.66-31.09-2.37-1.51-.45-3.42.54-3.76 2.13-2.86 13.74-16.42 22.06-29.81 22.52-8.49.29-16.94-2-24.6-5.55-6.76-3.13-13.01-8.23-20.49-9.56-3.99-.71-7.98-.19-11.99-.17-3.81.02-7.59-.41-11.3-1.3-6.74-1.62-13.24-4.68-18.49-9.25-10.59-9.21-15.52-24.38-10.84-37.86 4.86-14.02 21.24-22.33 35.29-17.22 3.71 1.35 5.27-4.53 1.62-5.89-12.03-4.48-12.24-21.89-5.56-30.84 10.23-13.72 31.68-10.38 44.61-3.14 1.41.79 3.38.38 4.18-1.1 6.44-11.83 19.46-19.44 33-18.79 10.8.52 21.04 6.61 27.19 15.46-.3.15-.6.31-.9.46-3.47 1.85-.39 7.12 3.08 5.27.28-.15.56-.29.84-.43.23.5.45 1.01.65 1.52 1.43 3.61 7.34 2.04 5.89-1.62-.32-.81-.67-1.6-1.04-2.38 12.6-4.97 28.53-6.5 38.7 3.31 8.15 7.86 11.41 24.42 1.01 31.93-2.46 1.77-1.6 5.48 1.54 5.69 7.05.47 12.53 5.74 15.3 11.96 3.08 6.94 2.49 14.61-.95 21.3z"></path><path fill="#212B50" d="M224.42 141.1c-8.31 11.8-22.5 18.46-36.85 17.74-3.93-.2-3.92 5.91 0 6.11 16.59.83 32.59-7.24 42.12-20.77 2.27-3.22-3.02-6.27-5.27-3.08zM221.99 224.27l-1.44 15.83c-.36 3.91 5.75 3.89 6.11 0l1.44-15.83c.36-3.91-5.75-3.89-6.11 0zM184.58 234.34l-1.44 25.9c-.22 3.93 5.89 3.91 6.11 0l1.44-25.9c.22-3.93-5.89-3.91-6.11 0zM76.31 220.69v18.71c0 3.93 6.11 3.93 6.11 0v-18.71c0-3.93-6.11-3.94-6.11 0zM50.6 235.89l-1.38-27.34c-.2-3.91-6.3-3.95-6.11-.01l1.38 27.34c.2 3.91 6.3 3.95 6.11.01zM256.64 210.51l-2.88 15.83c-.7 3.84 5.18 5.49 5.89 1.62l2.88-15.83c.7-3.84-5.18-5.49-5.89-1.62zM107.88 223.31l-1.44 33.1c-.17 3.93 5.93 3.92 6.11 0l1.44-33.1c.17-3.93-5.93-3.92-6.11 0z"></path><path d="M157.59 267.44l-1.44-24.46c-.23-3.91-6.34-3.93-6.11 0l1.44 24.46c.23 3.9 6.34 3.93 6.11 0z"></path></svg>
+							</div>
+						</div>
+					</div>
+				</div> 
+                <!-- 常见问题end -->
+                <!-- Footer
+                ============================================= -->
+                <footer id="footer" class="border-0">
+
+                    <!-- Copyrights
+                    ============================================= -->
+                    <div id="copyrights" class="bg-white pb-6 pt-0">
+                        <div class="container">
+
+                            <div class="row col-mb-30 align-items-end">
+
+                                <div class="col-md-6 text-center text-md-start">
+                                    <img src="./img/logo3.0.png" alt="Logo" class="d-block mx-auto mx-md-0" width="150">
+                                    <p class="text-larger mb-2">Copyrights © 2022-2025 忆墨痕 版权所有. Inc.</p>
+                                    <!-- <span class="op-07">请遵守所在国家的相关法律法规</span> -->
+                                </div>
+
+                                <div class="col-md-6 text-center text-md-end">
+                                    <div class="d-flex justify-content-center justify-content-md-end" style="--cnvs-socialicon-gap-x:0.8rem;">
+                                        <a onclick="showPopup('qq')" class="social-icon si-small rounded-circle">
+                                            <i><img src="./img/qq.svg"></i>
+                                            <i><img src="./img/qq.svg"></i>
+                                        </a>
+                                        <a onclick="showPopup('weixin')" class="social-icon si-small rounded-circle">
+                                            <i><img src="./img/微信.svg"></i>
+                                            <i><img src="./img/微信.svg"></i>
+                                        </a>
+                                        <a  href="https://github.com/LC044/WeChatMsg/" target="_blank"  class="social-icon si-small rounded-circle">
+                                            <i><img src="./img/github.svg"></i>
+                                            <i><img src="./img/github.svg"></i>
+                                        </a>
+                                        <a href="https://gitee.com/LC044/WeChatMsg/" target="_blank" class="social-icon si-small rounded-circle">
+                                            <i><img src="./img/gitee.svg"></i>
+                                            <i><img src="./img/gitee.svg"></i>
+                                        </a>
+                                    </div>
+                                    <div class="clear"></div>
+
+                                    <div class="copyright-links mt-4 text-larger"><a href="#">隐私政策</a> / <a href="./website-terms-of-use.html" target="_blank">服务条款</a> / <a href="./prime-membership-contract.html">付费会员服务协议</a></div>
+                                </div> 
+
+                            </div>
+
+                        </div>
+                    </div><!-- #copyrights end -->
+                    <div style="background:none;height: 5%;position: absolute;bottom:10px;width: 100%;text-align: center;">
+                        <a href="https://beian.miit.gov.cn/" target="_blank">陕ICP备2023017789号</a><br>
+                        <p>
+                            <img style="padding-top:2px;" src="https://blog.lc044.love/static/img/98bb6a629683483badecfae5f5649863.å¤æ¡å¾æ .webp">
+                            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002002696" target="_blank">陕公网安备61019002002696号</a>
+                        </p>
+                        </a>
+                    </div>
+                </footer><!-- #footer end -->
+			</div>
+		</section><!-- #content end -->
+        
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="uil uil-angle-up rounded-6"><i><svg t="1708412914078" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1655" width="24" height="24"><path d="M512 31.9488l-384 384h224.0512v576.1024h319.8976V415.9488H896z" fill="#F0EEE2" p-id="1656"></path><path d="M384 896h256v64H384z" fill="#BBAA9C" p-id="1657"></path><path d="M576 927.9488h-48.0256c-8.8064 0.2048-15.7696 7.5776-15.5648 16.384 0.2048 8.4992 7.0656 15.36 15.5648 15.5648h48.0256c8.8064-0.2048 15.7696-7.5776 15.5648-16.384-0.2048-8.3968-7.0656-15.2576-15.5648-15.5648zM640 576h-64c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744H640c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.168-15.9744-15.9744-15.9744zM527.9744 768c0-8.8064-7.168-15.9744-15.9744-15.9744H384c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744h128c8.8064 0 15.9744-7.168 15.9744-15.9744z m-47.9232-256H512c8.8064-0.2048 15.7696-7.5776 15.5648-16.384-0.2048-8.4992-7.0656-15.36-15.5648-15.5648h-31.9488c-8.8064 0.2048-15.7696 7.5776-15.5648 16.384 0.1024 8.4992 6.9632 15.36 15.5648 15.5648z m47.9232 159.9488c0 8.8064 7.168 15.9744 15.9744 15.9744s15.9744-7.168 15.9744-15.9744-7.168-15.9744-15.9744-15.9744-15.9744 7.168-15.9744 15.9744z m-79.9744-319.8976c8.8064 0.2048 16.1792-6.7584 16.384-15.5648s-6.7584-16.1792-15.5648-16.384H368.0256c-8.8064 0.2048-15.7696 7.5776-15.5648 16.384 0.2048 8.4992 7.0656 15.36 15.5648 15.5648h79.9744z m207.9744-80.0768h-64c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744h64c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.0656-15.9744-15.9744-15.9744zM512 159.9488h79.9744c8.8064 0 15.9744-7.168 15.9744-15.9744s-7.168-15.9744-15.9744-15.9744H512c-8.8064 0-15.9744 7.168-15.9744 15.9744s7.168 15.9744 15.9744 15.9744z" fill="#D8D5BA" p-id="1658"></path><path d="M918.6304 393.3184l-384-384c-12.4928-12.4928-32.768-12.4928-45.2608 0l-384 384c-12.4928 12.4928-12.4928 32.768 0 45.2608 6.0416 6.0416 14.1312 9.4208 22.6304 9.4208h192v543.9488c0 17.7152 14.336 31.9488 31.9488 31.9488h320c17.7152 0 31.9488-14.336 31.9488-31.9488V448H896c17.7152 0 32.0512-14.336 32.0512-31.9488 0-8.4992-3.3792-16.6912-9.4208-22.7328zM384 896h256v64H384V896z m287.9488-512c-17.7152 0-31.9488 14.336-31.9488 31.9488v448H384V415.9488c0-17.7152-14.336-31.9488-31.9488-31.9488H205.2096L512 77.2096 818.7904 384H671.9488z" fill="#5F4E56" p-id="1659"></path></svg></i></div>
+	<div id="modal" class="modal" onclick="hideModal()">
+		<img id="modal-image" class="modal-image">
+	</div>
+	<!-- 弹窗内容 -->
+<!-- 弹窗内容 -->
+<div id="popup" onclick="closePopup()">
+	<span id="close-btn" onclick="closePopup()">&times;</span>
+    <div id="popup-content">
+
+    </div>
+</div>
+	<!-- JavaScripts
+	============================================= -->
+	<script src="./js/plugins.min.js"></script>
+	<script src="./js/functions.bundle.js"></script>
+<!-- JavaScript 代码 -->
+<script>
+    var popup = document.getElementById("popup");
+    var showButton = document.getElementById("show");
+    var popup_content = document.getElementById('popup-content');
+	function showPopup(type_){
+        if(type_=='qq'){
+            popup_content.innerHTML = `<img src="./img/qq4.jpg" alt="Image">
+	<p>关注微信公众号<br>回复：“联系方式” 获取QQ群密码</p>`;
+        }
+        else if(type_=='weixin'){
+            popup_content.innerHTML = `<img src="./img/weixin.png" alt="Image">
+	<p>关注微信公众号持续关注更新内容<br>回复：“联系方式” 获取QQ群密码</p>`;
+        }
+        else if(type_=='download'){
+            popup_content.innerHTML = `
+        <a href="https://wwcj.lanzouw.com/b00rn0qovi"  target="_blank" style="	font-size: 48px;">点击下载</a>
+
+        <h3>密码：ez1k</h3>
+            `
+        }
+        // <a href="https://www.alipan.com/s/4zCUkaTANM1" style="display: flex;" target="_blank"><img class="icon" src="./img/阿里云盘.svg"><h2>阿里云盘</h2></a>
+        // <a href="https://pan.baidu.com/s/1Bc7Nnnn4yychMPVFDDAsKA?pwd=ez1k#list/path=%2F" style="display: flex;" target="_blank"><img class="icon" src="./img/百度网盘.svg"><h2>百度网盘</h2></a>
+		popup.style.display = "block";
+	}
+    // 点击触发元素时显示弹窗
+    showButton.addEventListener("click", function() {
+        
+    });
+
+    // 关闭弹窗的函数
+    function closePopup() {
+        popup.style.display = "none";
+    }
+</script>
+	<script>
+		jQuery(document).ready(function() {
+			var swiperParent = new Swiper('.swiper-parent',{
+				spaceBetween: 40,
+				loop: true,
+				pagination:{
+					clickable: false
+				},
+				grabCursor: true,
+				navigation: {
+					prevEl: '.slider-arrow-left',
+					nextEl: '.slider-arrow-right'
+				},
+				pagination: {
+					el: ".swiper-pagination",
+					clickable: true,
+					renderBullet: function (index, className) {
+						return '<span class="' + className + '">0' + (index + 1) + "</span>";
+					},
+				},
+				breakpoints: {
+					768: {
+					  slidesPerView: 2
+					},
+					992: {
+					  slidesPerView: 3
+					},
+					1200: {
+					  slidesPerView: 4
+					}
+				}
+			});
+		});
+	</script>
+
+<script>
+		jQuery(document).ready(function() {
+			SEMICOLON.Core.viewport();
+			SEMICOLON.Core.breakpoints();
+			SEMICOLON.Base.menuBreakpoint();
+		})
+</script>
+<script>
+	function showModal(image) {
+    var modal = document.getElementById("modal");
+    var modalImage = document.getElementById("modal-image");
+    modal.style.display = "block";
+    modalImage.src = image.src;
+    // console.log(image.src);
+}
+
+	function hideModal() {
+		var modal = document.getElementById("modal");
+		modal.style.display = "none";
+	}
+</script>
+
+<!-- <script
+async
+defer
+src="http://kbchat.lc044.love/api/application/embed?protocol=http&host=192.168.1.113:26666&token=16518b367388aa75">
+</script> -->
+
+
+
+<script>
+	jQuery('#ytb-video').on('click', function(e){
+		e.preventDefault();
+
+		if( jQuery(this).hasClass('video-played') ) {
+			jQuery('#ytb-video').YTPPause();
+		} else {
+			jQuery('#ytb-video').YTPPlay();
+			jQuery('.ytb-poster').stop(true,true).fadeTo( "slow", 0 );
+		}
+
+		jQuery(this).toggleClass('video-played');
+	});
+
+	function showcaseSection( element ){
+		var otherElements = element.parents('.showcase-section').find('.showcase-feature'),
+			elementTarget = jQuery( element.attr('data-target') ),
+			otherTargets = element.parents('.showcase-section').find('.showcase-target');
+
+		otherElements.removeClass('showcase-feature-active');
+		element.addClass('showcase-feature-active');
+		otherTargets.removeClass('showcase-target-active');
+		elementTarget.addClass('showcase-target-active');
+	}
+
+	jQuery('.showcase-feature').hover( function(){
+		showcaseSection( jQuery(this) );
+	});
+
+	jQuery(document).ready( function() {
+		var pricingBikes = 1,
+			days = 1,
+			elementbikes = jQuery(".range-slider-bikes"),
+			elementDays = jQuery(".range-slider-days");
+
+		elementbikes.ionRangeSlider({
+			grid: false,
+			step: 1,
+			min: 1,
+			from:1,
+			max: 5,
+			postfix: ' Bike(s)',
+			onStart: function(data){
+				pricingBikes = data.from;
+			}
+		});
+
+		elementbikes.on( 'change', function(){
+			pricingBikes = jQuery(this).prop('value');
+			calculatePrice( pricingBikes, days );
+		});
+
+		elementDays.ionRangeSlider({
+			grid: false,
+			step: 1,
+			min: 1,
+			from: 4,
+			max: 30,
+			postfix: ' Days',
+			onStart: function(data){
+				days = data.from;
+				console.log(data);
+			}
+		});
+
+		elementDays.on( 'onStart change', function(){
+			days = jQuery(this).prop('value');
+			calculatePrice( pricingBikes, days );
+		});
+
+		calculatePrice( pricingBikes, days );
+
+		function calculatePrice( bikes, days ) {
+			var pricingValue = ( Number(bikes) * 1 ) * ( Number(days) * 2 );
+			jQuery('.pricing-price').html( '$'+pricingValue );
+		}
+	});
+</script>
+
+<script>
+	jQuery(document).ready(function() {
+		SEMICOLON.Core.viewport();
+		SEMICOLON.Core.breakpoints();
+		SEMICOLON.Base.menuBreakpoint();
+	})
+	var chart_51ebd4312946429e9c32b2b55b96 = echarts.init(
+        document.getElementById('word_cloud'), 'white', {renderer: 'canvas'});
+    var result = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "wordCloud",
+            "name": "\u804a\u5929\u6587\u5b57",
+            "shape": "circle",
+            "rotationRange": [
+                -90,
+                90
+            ],
+            "rotationStep": 45,
+            "girdSize": 20,
+            "sizeRange": [
+                5,
+                40
+            ],
+            "data": [
+                {
+                    "name": "\u53d1\u5446",
+                    "value": 601,
+                    "textStyle": {
+                        "color": "rgb(4,52,51)"
+                    }
+                },
+                {
+                    "name": "\u8001\u5e08",
+                    "value": 533,
+                    "textStyle": {
+                        "color": "rgb(4,135,23)"
+                    }
+                },
+                {
+                    "name": "\u96be\u8fc7",
+                    "value": 498,
+                    "textStyle": {
+                        "color": "rgb(123,138,73)"
+                    }
+                },
+                {
+                    "name": "\u5fae\u7b11",
+                    "value": 479,
+                    "textStyle": {
+                        "color": "rgb(140,143,120)"
+                    }
+                },
+                {
+                    "name": "\u5e72\u561b",
+                    "value": 426,
+                    "textStyle": {
+                        "color": "rgb(119,102,126)"
+                    }
+                },
+                {
+                    "name": "\u4e1c\u897f",
+                    "value": 405,
+                    "textStyle": {
+                        "color": "rgb(149,23,87)"
+                    }
+                },
+                {
+                    "name": "\u5b66\u6821",
+                    "value": 312,
+                    "textStyle": {
+                        "color": "rgb(122,4,158)"
+                    }
+                },
+                {
+                    "name": "\u4e3a\u5565",
+                    "value": 282,
+                    "textStyle": {
+                        "color": "rgb(48,51,23)"
+                    }
+                },
+                {
+                    "name": "\u4ee3\u7801",
+                    "value": 274,
+                    "textStyle": {
+                        "color": "rgb(63,116,11)"
+                    }
+                },
+                {
+                    "name": "\u660e\u5929",
+                    "value": 243,
+                    "textStyle": {
+                        "color": "rgb(46,102,28)"
+                    }
+                },
+                {
+                    "name": "\u6d41\u6cea",
+                    "value": 238,
+                    "textStyle": {
+                        "color": "rgb(82,107,52)"
+                    }
+                },
+                {
+                    "name": "\u5b9e\u4e60",
+                    "value": 237,
+                    "textStyle": {
+                        "color": "rgb(63,58,12)"
+                    }
+                },
+                {
+                    "name": "\u5e94\u8be5",
+                    "value": 230,
+                    "textStyle": {
+                        "color": "rgb(10,68,66)"
+                    }
+                },
+                {
+                    "name": "\u534e\u4e3a",
+                    "value": 224,
+                    "textStyle": {
+                        "color": "rgb(144,145,79)"
+                    }
+                },
+                {
+                    "name": "\u7535\u8111",
+                    "value": 200,
+                    "textStyle": {
+                        "color": "rgb(58,122,2)"
+                    }
+                },
+                {
+                    "name": "\u786e\u5b9e",
+                    "value": 198,
+                    "textStyle": {
+                        "color": "rgb(69,37,152)"
+                    }
+                },
+                {
+                    "name": "\u665a\u4e0a",
+                    "value": 197,
+                    "textStyle": {
+                        "color": "rgb(59,7,80)"
+                    }
+                },
+                {
+                    "name": "\u65f6\u95f4",
+                    "value": 195,
+                    "textStyle": {
+                        "color": "rgb(22,147,69)"
+                    }
+                },
+                {
+                    "name": "\u624b\u673a",
+                    "value": 188,
+                    "textStyle": {
+                        "color": "rgb(103,97,82)"
+                    }
+                },
+                {
+                    "name": "\u76b1\u7709",
+                    "value": 187,
+                    "textStyle": {
+                        "color": "rgb(7,107,100)"
+                    }
+                },
+                {
+                    "name": "\u4e0b\u73ed",
+                    "value": 183,
+                    "textStyle": {
+                        "color": "rgb(90,23,0)"
+                    }
+                },
+                {
+                    "name": "E2%",
+                    "value": 178,
+                    "textStyle": {
+                        "color": "rgb(77,127,144)"
+                    }
+                },
+                {
+                    "name": "https",
+                    "value": 170,
+                    "textStyle": {
+                        "color": "rgb(157,90,22)"
+                    }
+                },
+                {
+                    "name": "\u7761\u89c9",
+                    "value": 157,
+                    "textStyle": {
+                        "color": "rgb(125,135,130)"
+                    }
+                },
+                {
+                    "name": "\u4e24\u4e2a",
+                    "value": 157,
+                    "textStyle": {
+                        "color": "rgb(1,141,117)"
+                    }
+                },
+                {
+                    "name": "\u5b66\u4e60",
+                    "value": 155,
+                    "textStyle": {
+                        "color": "rgb(128,5,64)"
+                    }
+                },
+                {
+                    "name": "\u5bbf\u820d",
+                    "value": 152,
+                    "textStyle": {
+                        "color": "rgb(24,135,31)"
+                    }
+                },
+                {
+                    "name": "\u80af\u5b9a",
+                    "value": 151,
+                    "textStyle": {
+                        "color": "rgb(126,28,99)"
+                    }
+                },
+                {
+                    "name": "\u597d\u50cf",
+                    "value": 150,
+                    "textStyle": {
+                        "color": "rgb(139,136,131)"
+                    }
+                },
+                {
+                    "name": "\u5565\u65f6\u5019",
+                    "value": 149,
+                    "textStyle": {
+                        "color": "rgb(70,120,71)"
+                    }
+                },
+                {
+                    "name": "\u5403\u996d",
+                    "value": 147,
+                    "textStyle": {
+                        "color": "rgb(121,127,103)"
+                    }
+                },
+                {
+                    "name": "\u8138\u7ea2",
+                    "value": 145,
+                    "textStyle": {
+                        "color": "rgb(52,154,19)"
+                    }
+                },
+                {
+                    "name": "\u56de\u5bb6",
+                    "value": 143,
+                    "textStyle": {
+                        "color": "rgb(23,7,75)"
+                    }
+                },
+                {
+                    "name": "\u516c\u53f8",
+                    "value": 143,
+                    "textStyle": {
+                        "color": "rgb(32,79,125)"
+                    }
+                },
+                {
+                    "name": "\u6570\u636e",
+                    "value": 140,
+                    "textStyle": {
+                        "color": "rgb(100,74,48)"
+                    }
+                },
+                {
+                    "name": "\u4e0d\u597d",
+                    "value": 135,
+                    "textStyle": {
+                        "color": "rgb(43,84,40)"
+                    }
+                },
+                {
+                    "name": "\u5c0f\u65f6",
+                    "value": 134,
+                    "textStyle": {
+                        "color": "rgb(66,112,77)"
+                    }
+                },
+                {
+                    "name": "\u4e0d\u5230",
+                    "value": 134,
+                    "textStyle": {
+                        "color": "rgb(80,10,126)"
+                    }
+                },
+                {
+                    "name": "\u4e0d\u7528",
+                    "value": 132,
+                    "textStyle": {
+                        "color": "rgb(4,141,152)"
+                    }
+                },
+                {
+                    "name": "\u4e0a\u73ed",
+                    "value": 128,
+                    "textStyle": {
+                        "color": "rgb(16,2,35)"
+                    }
+                },
+                {
+                    "name": "\u51e0\u4e2a",
+                    "value": 127,
+                    "textStyle": {
+                        "color": "rgb(83,65,22)"
+                    }
+                },
+                {
+                    "name": "\u897f\u5b89",
+                    "value": 127,
+                    "textStyle": {
+                        "color": "rgb(96,75,109)"
+                    }
+                },
+                {
+                    "name": "\u559c\u6b22",
+                    "value": 123,
+                    "textStyle": {
+                        "color": "rgb(30,58,56)"
+                    }
+                },
+                {
+                    "name": "\u4e0d\u60f3",
+                    "value": 121,
+                    "textStyle": {
+                        "color": "rgb(140,18,99)"
+                    }
+                },
+                {
+                    "name": "\u8ba1\u7b97\u673a",
+                    "value": 119,
+                    "textStyle": {
+                        "color": "rgb(128,157,58)"
+                    }
+                },
+                {
+                    "name": "\u6e38\u620f",
+                    "value": 118,
+                    "textStyle": {
+                        "color": "rgb(0,51,97)"
+                    }
+                },
+                {
+                    "name": "\u5c0f\u59d0\u59d0",
+                    "value": 118,
+                    "textStyle": {
+                        "color": "rgb(117,134,140)"
+                    }
+                },
+                {
+                    "name": "\u9762\u8bd5",
+                    "value": 117,
+                    "textStyle": {
+                        "color": "rgb(104,157,94)"
+                    }
+                },
+                {
+                    "name": "\u6628\u5929",
+                    "value": 116,
+                    "textStyle": {
+                        "color": "rgb(52,93,0)"
+                    }
+                },
+                {
+                    "name": "\u4fe1\u606f",
+                    "value": 115,
+                    "textStyle": {
+                        "color": "rgb(95,111,142)"
+                    }
+                },
+                {
+                    "name": "\u6bd5\u4e1a",
+                    "value": 112,
+                    "textStyle": {
+                        "color": "rgb(58,23,103)"
+                    }
+                },
+                {
+                    "name": "\u597d\u591a",
+                    "value": 111,
+                    "textStyle": {
+                        "color": "rgb(121,64,54)"
+                    }
+                },
+                {
+                    "name": "\u6570\u636e\u5e93",
+                    "value": 110,
+                    "textStyle": {
+                        "color": "rgb(13,114,31)"
+                    }
+                },
+                {
+                    "name": "\u6253\u6e38\u620f",
+                    "value": 110,
+                    "textStyle": {
+                        "color": "rgb(104,3,85)"
+                    }
+                },
+                {
+                    "name": "\u56de\u6765",
+                    "value": 109,
+                    "textStyle": {
+                        "color": "rgb(16,119,67)"
+                    }
+                },
+                {
+                    "name": "\u56de\u53bb",
+                    "value": 109,
+                    "textStyle": {
+                        "color": "rgb(73,156,139)"
+                    }
+                },
+                {
+                    "name": "com",
+                    "value": 106,
+                    "textStyle": {
+                        "color": "rgb(76,57,115)"
+                    }
+                },
+                {
+                    "name": "\u5fae\u4fe1",
+                    "value": 106,
+                    "textStyle": {
+                        "color": "rgb(133,14,113)"
+                    }
+                },
+                {
+                    "name": "\u7814\u7a76",
+                    "value": 105,
+                    "textStyle": {
+                        "color": "rgb(125,74,55)"
+                    }
+                },
+                {
+                    "name": "\u4e0a\u6b21",
+                    "value": 103,
+                    "textStyle": {
+                        "color": "rgb(106,46,41)"
+                    }
+                },
+                {
+                    "name": "\u597d\u597d",
+                    "value": 103,
+                    "textStyle": {
+                        "color": "rgb(63,15,27)"
+                    }
+                },
+                {
+                    "name": "\u7814\u7a76\u751f",
+                    "value": 103,
+                    "textStyle": {
+                        "color": "rgb(6,156,145)"
+                    }
+                },
+                {
+                    "name": "\u53c2\u52a0",
+                    "value": 102,
+                    "textStyle": {
+                        "color": "rgb(130,124,29)"
+                    }
+                },
+                {
+                    "name": "\u50b2\u6162",
+                    "value": 102,
+                    "textStyle": {
+                        "color": "rgb(103,124,80)"
+                    }
+                },
+                {
+                    "name": "\u4e09\u5e74",
+                    "value": 101,
+                    "textStyle": {
+                        "color": "rgb(101,54,132)"
+                    }
+                },
+                {
+                    "name": "\u5b66\u751f",
+                    "value": 99,
+                    "textStyle": {
+                        "color": "rgb(17,123,111)"
+                    }
+                },
+                {
+                    "name": "\u5bfc\u5e08",
+                    "value": 99,
+                    "textStyle": {
+                        "color": "rgb(48,93,52)"
+                    }
+                },
+                {
+                    "name": "\u4e0d\u9519",
+                    "value": 98,
+                    "textStyle": {
+                        "color": "rgb(22,42,101)"
+                    }
+                },
+                {
+                    "name": "\u6bd5\u8bbe",
+                    "value": 97,
+                    "textStyle": {
+                        "color": "rgb(127,132,92)"
+                    }
+                },
+                {
+                    "name": "\u8d77\u5e8a",
+                    "value": 96,
+                    "textStyle": {
+                        "color": "rgb(51,124,122)"
+                    }
+                },
+                {
+                    "name": "\u5de5\u8d44",
+                    "value": 95,
+                    "textStyle": {
+                        "color": "rgb(49,74,68)"
+                    }
+                },
+                {
+                    "name": "\u5f00\u53d1",
+                    "value": 94,
+                    "textStyle": {
+                        "color": "rgb(130,82,39)"
+                    }
+                },
+                {
+                    "name": "\u62a5\u544a",
+                    "value": 94,
+                    "textStyle": {
+                        "color": "rgb(100,28,24)"
+                    }
+                },
+                {
+                    "name": "\u4e00\u70b9",
+                    "value": 93,
+                    "textStyle": {
+                        "color": "rgb(154,40,71)"
+                    }
+                },
+                {
+                    "name": "\u7cfb\u7edf",
+                    "value": 88,
+                    "textStyle": {
+                        "color": "rgb(29,151,122)"
+                    }
+                },
+                {
+                    "name": "\u4e0b\u5348",
+                    "value": 87,
+                    "textStyle": {
+                        "color": "rgb(67,103,42)"
+                    }
+                },
+                {
+                    "name": "\u51e0\u5929",
+                    "value": 86,
+                    "textStyle": {
+                        "color": "rgb(122,29,94)"
+                    }
+                },
+                {
+                    "name": "\u6653\u5f97",
+                    "value": 85,
+                    "textStyle": {
+                        "color": "rgb(50,2,104)"
+                    }
+                },
+                {
+                    "name": "\u6ca1\u4e8b",
+                    "value": 85,
+                    "textStyle": {
+                        "color": "rgb(97,17,102)"
+                    }
+                },
+                {
+                    "name": "\u5e08\u59d0",
+                    "value": 85,
+                    "textStyle": {
+                        "color": "rgb(45,115,44)"
+                    }
+                },
+                {
+                    "name": "\u8bfb\u7814",
+                    "value": 84,
+                    "textStyle": {
+                        "color": "rgb(113,37,18)"
+                    }
+                },
+                {
+                    "name": "\u8003\u7814",
+                    "value": 84,
+                    "textStyle": {
+                        "color": "rgb(142,96,84)"
+                    }
+                },
+                {
+                    "name": "\u7b54\u8fa9",
+                    "value": 84,
+                    "textStyle": {
+                        "color": "rgb(130,67,152)"
+                    }
+                },
+                {
+                    "name": "\u4e0d\u884c",
+                    "value": 83,
+                    "textStyle": {
+                        "color": "rgb(17,80,56)"
+                    }
+                },
+                {
+                    "name": "\u5b66\u9662",
+                    "value": 83,
+                    "textStyle": {
+                        "color": "rgb(82,61,19)"
+                    }
+                },
+                {
+                    "name": "\u5e72\u6d3b",
+                    "value": 82,
+                    "textStyle": {
+                        "color": "rgb(56,78,150)"
+                    }
+                },
+                {
+                    "name": "\u6253\u5f00",
+                    "value": 82,
+                    "textStyle": {
+                        "color": "rgb(75,41,8)"
+                    }
+                },
+                {
+                    "name": "\u597d\u770b",
+                    "value": 82,
+                    "textStyle": {
+                        "color": "rgb(103,109,19)"
+                    }
+                },
+                {
+                    "name": "\u52a0\u73ed",
+                    "value": 82,
+                    "textStyle": {
+                        "color": "rgb(71,48,126)"
+                    }
+                },
+                {
+                    "name": "\u4e09\u4e2a",
+                    "value": 81,
+                    "textStyle": {
+                        "color": "rgb(36,75,110)"
+                    }
+                },
+                {
+                    "name": "\u8f6f\u4ef6",
+                    "value": 81,
+                    "textStyle": {
+                        "color": "rgb(65,39,107)"
+                    }
+                },
+                {
+                    "name": "\u4e0b\u8f7d",
+                    "value": 80,
+                    "textStyle": {
+                        "color": "rgb(31,50,137)"
+                    }
+                },
+                {
+                    "name": "\u7b97\u6cd5",
+                    "value": 80,
+                    "textStyle": {
+                        "color": "rgb(80,75,100)"
+                    }
+                },
+                {
+                    "name": "\u611f\u89c9",
+                    "value": 80,
+                    "textStyle": {
+                        "color": "rgb(32,19,40)"
+                    }
+                },
+                {
+                    "name": "\u9879\u76ee",
+                    "value": 80,
+                    "textStyle": {
+                        "color": "rgb(108,84,87)"
+                    }
+                },
+                {
+                    "name": "\u548b\u529e",
+                    "value": 79,
+                    "textStyle": {
+                        "color": "rgb(49,108,88)"
+                    }
+                },
+                {
+                    "name": "\u8bba\u6587",
+                    "value": 79,
+                    "textStyle": {
+                        "color": "rgb(21,70,11)"
+                    }
+                },
+                {
+                    "name": "\u771f\u7684",
+                    "value": 78,
+                    "textStyle": {
+                        "color": "rgb(15,72,118)"
+                    }
+                },
+                {
+                    "name": "\u53d1\u73b0",
+                    "value": 77,
+                    "textStyle": {
+                        "color": "rgb(97,149,62)"
+                    }
+                },
+                {
+                    "name": "\u8003\u8bd5",
+                    "value": 77,
+                    "textStyle": {
+                        "color": "rgb(153,47,122)"
+                    }
+                }
+            ],
+            "drawOutOfBound": false,
+            "textStyle": {
+                "emphasis": {}
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [],
+            "selected": {}
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    }
+};
+    // 获取屏幕宽度
+    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    // 根据屏幕宽度设置字体范围
+    let fontSizeRange;
+    if (screenWidth < 768) { // 手机屏幕
+        fontSizeRange = [5, 40];
+    } else { // 电脑屏幕
+        fontSizeRange = [10, 100];
+    }
+    result.series[0].sizeRange = fontSizeRange;
+    chart_51ebd4312946429e9c32b2b55b96.setOption(result);
+</script>
+
+
+</body>
+</html>
